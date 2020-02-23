@@ -10,7 +10,7 @@ module.exports = (env, argv) => {
 
   return {
     target: "web",
-    entry: "./frontend/index.ts",
+    entry: "./src/index.ts",
     output: {
       path: path.join(outputDir),
       filename: path.join("js", "bundle.js")
@@ -40,7 +40,7 @@ module.exports = (env, argv) => {
               options: {
                 sourceMap: true,
                 modules: true,
-                localIdentName: "[local]___[hash:base64:5]",
+                localIdentName: "[local]___[hash:base64:5]"
               }
             },
             {
