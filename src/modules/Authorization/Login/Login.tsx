@@ -1,5 +1,10 @@
 import * as React from "react";
+import { LoginForm } from "./LoginForm";
 
 export const Login: React.FC = () => {
-  return <>Login page</>;
+  return (
+    <>
+      <LoginForm />
+    </>
+  );
 };

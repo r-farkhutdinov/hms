@@ -1,10 +1,14 @@
 import * as React from "react";
-import { Switch } from "react-router-dom";
+import { Switch, BrowserRouter } from "react-router-dom";
+import { routes } from "./modules/routes";
+import "./styles/main.css";
 
 export const App: React.FC = () => {
   return (
     <>
-      <Switch></Switch>
+      <BrowserRouter>
+        <Switch>{routes.map(route => route.route)}</Switch>
+      </BrowserRouter>
     </>
   );
 };
