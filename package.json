@@ -9,8 +9,14 @@
   "author": "Ruslan Farkhutdinov <fr3ddy4@yandex.ru>",
   "license": "MIT",
   "dependencies": {
-    "antd": "^3.26.7",
+    "@ant-design/icons": "^4.0.4",
+    "antd": "^4.0.4",
+    "axios": "^0.19.2",
+    "history": "^4.10.1",
     "less": "^3.11.1",
+    "mobx": "^5.15.4",
+    "mobx-react": "^6.1.8",
+    "mobx-state-tree": "^3.15.0",
     "react": "^16.12.0",
     "react-dom": "^16.12.0",
     "react-reveal": "^1.2.2",
@@ -20,6 +26,7 @@
     "tailwind-react-ui": "^0.8.1",
     "tailwindcss": "^1.2.0",
     "typescript": "^3.7.5",
+    "use-react-router": "^1.0.7",
     "webpack": "^4.41.5"
   },
   "devDependencies": {

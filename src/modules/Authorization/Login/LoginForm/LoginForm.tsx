@@ -1,73 +1,65 @@
 import * as React from "react";
-import { FormComponentProps } from "antd/lib/form";
-import { Form, Icon, Input, Button } from "antd";
+import { Form, Input, Button, Spin } from "antd";
+import { UserOutlined, BankOutlined, LockOutlined } from "@ant-design/icons";
 import style from "./LoginForm.less";
 import Fade from "react-reveal/Fade";
+import { useStore } from "../../../../core/util";
+import useRouter from "use-react-router";
 
-type LoginFormProps = {
-  action: (username: string, password: string) => void;
-};
+type Props = {};
 
-type Props = LoginFormProps & FormComponentProps;
+export const LoginForm: React.FC<Props> = props => {
+  const { authorization } = useStore();
+  const { history } = useRouter();
 
-const LoginFormRaw: React.FC<Props> = props => {
-  const { action } = props;
-
-  const submitForm = values => {
+  const onFinish = values => {
     const { username, password } = values;
 
-    action(username, password);
+    authorization.login(username, password, history);
   };
 
-  const handleSubmit = e => {
-    e.preventDefault();
-    props.form.validateFields((err, values) => {
-      if (!err) {
-        submitForm(values);
-      }
-    });
+  const onFinishFailed = errorInfo => {
+    console.log("Failed:", errorInfo);
   };
-
-  const { getFieldDecorator } = props.form;
 
   return (
     <div className={style.wrapper}>
       <p className={style.pageTitle}>
-        <Icon type="bank" /> HMS
+        <BankOutlined /> HMS
       </p>
       <Fade>
-        <Form onSubmit={handleSubmit} className={style.form}>
+        <Spin spinning={authorization.loading}></Spin>
+        <Form
+          name="basic"
+          initialValues={{ remember: true }}
+          onFinish={onFinish}
+          onFinishFailed={onFinishFailed}
+          className={style.form}
+        >
           <h1 className={style.title}>Sign in</h1>
 
-          <Form.Item>
-            {getFieldDecorator("username", {
-              rules: [{ required: true, message: "Enter the username" }]
-            })(
-              <Input
-                data-cy="username"
-                prefix={<Icon type="user" className={style.icon} />}
-                placeholder="Username"
-                onPressEnter={handleSubmit}
-              />
-            )}
-          </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("password", {
-              rules: [{ required: true, message: "Enter the password" }]
-            })(
-              <Input
-                prefix={<Icon type="lock" className={style.icon} />}
-                type="password"
-                placeholder="Password"
-                onPressEnter={handleSubmit}
-              />
-            )}
-          </Form.Item>
-          <Button
-            type="primary"
-            onClick={handleSubmit}
-            className={style.button}
+          <Form.Item
+            name="username"
+            rules={[{ required: true, message: "Enter the username" }]}
           >
+            <Input
+              prefix={<UserOutlined className={style.icon} />}
+              placeholder="Username"
+              onPressEnter={onFinish}
+            />
+          </Form.Item>
+          <Form.Item
+            name="password"
+            rules={[{ required: true, message: "Enter the password" }]}
+          >
+            <Input.Password
+              prefix={<LockOutlined className={style.icon} />}
+              type="password"
+              placeholder="Password"
+              onPressEnter={onFinish}
+            />
+          </Form.Item>
+          <Button type="primary" htmlType="submit" className={style.button}>
             Sign in
           </Button>
         </Form>
@@ -75,5 +67,3 @@ const LoginFormRaw: React.FC<Props> = props => {
     </div>
   );
 };
-
-export const LoginForm = Form.create()(LoginFormRaw);
