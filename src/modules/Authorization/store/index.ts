@@ -4,11 +4,10 @@ import { Instance } from "mobx-state-tree";
 
 export const AuthStore = AuthModel.actions(AuthActions);
 
-// const userJSON = localStorage.getItem("user");
-// const tokenJSON = localStorage.getItem("token");
-// console.log(userJSON);
-const user = undefined;
-const token = undefined;
+const userJSON = localStorage.getItem("user");
+const tokenJSON = localStorage.getItem("token");
+const user = userJSON ? JSON.parse(userJSON) : undefined;
+const token = tokenJSON;
 
 export const createAuthStore = () =>
   AuthStore.create({

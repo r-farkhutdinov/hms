@@ -8,7 +8,7 @@ const HotelModel = types.model({
 });
 
 export const HotelsModel = types.model({
-  hotel: types.maybe(HotelModel),
+  hotel: types.maybe(types.number),
   hotels: types.maybe(types.array(HotelModel)),
   loading: types.boolean
 });

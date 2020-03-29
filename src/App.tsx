@@ -1,14 +1,12 @@
 import * as React from "react";
-import { Switch, BrowserRouter } from "react-router-dom";
-import { routes } from "./modules/routes";
+import { BrowserRouter } from "react-router-dom";
 import "./styles/main.css";
+import { Layout } from "./modules/Layout";
 
 export const App: React.FC = () => {
   return (
-    <>
-      <BrowserRouter>
-        <Switch>{routes.map(route => route.route)}</Switch>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Layout />
+    </BrowserRouter>
   );
 };

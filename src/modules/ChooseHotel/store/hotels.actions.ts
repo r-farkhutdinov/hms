@@ -15,8 +15,9 @@ export const HotelsActions = (self: HotelsModelType) => {
     }
   });
 
-  const selectHotel = function(hotelId: number) {
-    self.hotel = self.hotels.find(hotel => hotel.id === hotelId);
+  const selectHotel = function(hotelId: number, history: any) {
+    self.hotel = hotelId;
+    history.push("/");
   };
 
   return {
