@@ -1,5 +1,5 @@
 import * as React from "react";
-import { Form, Input, Button, Spin } from "antd";
+import { Form, Input, Button, Spin, message } from "antd";
 import { UserOutlined, BankOutlined, LockOutlined } from "@ant-design/icons";
 import style from "./LoginForm.less";
 import Fade from "react-reveal/Fade";
@@ -19,7 +19,7 @@ export const LoginForm: React.FC<Props> = props => {
   };
 
   const onFinishFailed = errorInfo => {
-    console.log("Failed:", errorInfo);
+    message.error("Failed:", errorInfo);
   };
 
   return (
