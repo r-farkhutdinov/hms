@@ -1,0 +1,57 @@
+@footerHeight: 70px;
+@headerHeight: 64px;
+@contentMargin: 16px;
+
+.layout {
+  min-height: 100vh;
+
+  .header {
+    background: white;
+    padding: 0 16px;
+
+    .breadcrumb {
+      display: inline-block;
+      margin: 0 16px;
+    }
+
+    .meta {
+      transition: 0.2s;
+      height: @headerHeight;
+      position: absolute;
+      padding: 0 16px;
+      right: 16px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        background: #f0f2f5;
+        color: #40a9ff;
+      }
+    }
+  }
+
+  .content {
+    margin: 16px;
+
+    .panel {
+      background: white;
+      padding: 16px;
+      min-height: calc(
+        100vh - (2 * @contentMargin + @footerHeight + @headerHeight)
+      );
+    }
+  }
+
+  .trigger {
+    transition: 0.2s;
+
+    &:hover {
+      color: #40a9ff;
+    }
+  }
+
+  .footer {
+    background: #ffffff;
+    text-align: center;
+  }
+}

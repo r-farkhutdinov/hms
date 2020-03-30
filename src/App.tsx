@@ -1,12 +1,12 @@
 import * as React from "react";
 import { BrowserRouter } from "react-router-dom";
 import "./styles/main.css";
-import { Layout } from "./modules/Layout";
+import { MainLayout } from "./modules/MainLayout";
 
 export const App: React.FC = () => {
   return (
     <BrowserRouter>
-      <Layout />
+      <MainLayout />
     </BrowserRouter>
   );
 };

@@ -1,0 +1,46 @@
+{
+  "menu": [
+    {
+      "id": 0,
+      "title": "Бронирования",
+      "icon": "build",
+      "route": "/"
+    },
+    {
+      "id": 1,
+      "title": "Гости",
+      "icon": "team",
+      "route": "/guests"
+    },
+    {
+      "id": 2,
+      "title": "Услуги",
+      "icon": "check",
+      "route": "/services"
+    },
+    {
+      "id": 3,
+      "title": "Цены",
+      "icon": "percentage",
+      "route": "/prices"
+    },
+    {
+      "id": 4,
+      "title": "Номерной фонд",
+      "icon": "shop",
+      "route": "/rooms"
+    },
+    {
+      "id": 5,
+      "title": "Отели",
+      "icon": "shop",
+      "route": "/hotels"
+    },
+    {
+      "id": 6,
+      "title": "Logout",
+      "icon": "logout",
+      "route": "/logout"
+    }
+  ]
+}
