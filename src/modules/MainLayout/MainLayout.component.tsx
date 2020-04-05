@@ -83,7 +83,7 @@ export const MainLayout: React.FC = () => {
                 <Switch>{routes.map(route => route.route)}</Switch>
               </div>
             </Content>
-            <Footer className={style.footer}>VTF Solutions, 2019</Footer>
+            <Footer className={style.footer}>Ruslan Farkhutdinov, 2020</Footer>
           </Layout>
         </Layout>
       )}
