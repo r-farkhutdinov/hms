@@ -1,4 +1,4 @@
-import { mockHotels } from "./../../../services/hotels/mock";
+import { mockHotels } from "../../../services/hotels/mock";
 import { HotelsModelType } from "./hotels.model";
 import { flow } from "mobx-state-tree";
 import { message } from "antd";
@@ -20,7 +20,7 @@ export const HotelsActions = (self: HotelsModelType) => {
     self.selectedHotelId = hotelId;
     self.selectedHotel = toJS(self.hotels).find(h => h.id === hotelId);
     localStorage.setItem("hotel", JSON.stringify(self.selectedHotel));
-    history.push("/");
+    history.goBack();
   };
 
   return {

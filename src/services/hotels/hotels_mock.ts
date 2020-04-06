@@ -12,5 +12,17 @@ export const hotels: UserHotel[] = [
     name: "Korston Hotel 5*",
     location: "Moscow, Russia",
     ownerId: 0
+  },
+  {
+    id: 2,
+    name: "Test Hotel 4*",
+    location: "Kazan, Russia",
+    ownerId: 0
+  },
+  {
+    id: 3,
+    name: "Ostrovsky Hostel",
+    location: "Moscow, Russia",
+    ownerId: 0
   }
 ];

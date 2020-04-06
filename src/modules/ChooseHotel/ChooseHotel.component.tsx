@@ -5,7 +5,7 @@ import style from "./ChooseHotel.less";
 import { useStore } from "../../core/util";
 import { ListItem } from "./components/ListItem";
 import { observer } from "mobx-react";
-import { Button, message, Spin } from "antd";
+import { Button, message, Skeleton } from "antd";
 import useRouter from "use-react-router";
 
 export const ChooseHotel: React.FC = observer(() => {
@@ -40,18 +40,18 @@ export const ChooseHotel: React.FC = observer(() => {
       </p>
       <Fade>
         <div className={style.panel}>
-          <Spin spinning={loading} />
-          {hotelsOptions &&
-            hotelsOptions.map(h => (
-              <ListItem
-                onClick={() => setHotel(h.id)}
-                selected={h.id === hotel}
-                key={h.id}
-                location={h.location}
-                title={h.name}
-              />
-            ))}
-
+          <Skeleton loading={loading} active>
+            {hotelsOptions &&
+              hotelsOptions.map(h => (
+                <ListItem
+                  onClick={() => setHotel(h.id)}
+                  selected={h.id === hotel}
+                  key={h.id}
+                  location={h.location}
+                  title={h.name}
+                />
+              ))}
+          </Skeleton>
           <Button
             className={style.proceed}
             onClick={chooseHotel}

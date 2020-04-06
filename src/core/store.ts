@@ -1,7 +1,7 @@
 import { types, Instance } from "mobx-state-tree";
 import { createContext } from "react";
 import { AuthStore, createAuthStore } from "../modules/Authorization/store";
-import { HotelsStore, createHotelsStore } from "../modules/ChooseHotel/store";
+import { HotelsStore, createHotelsStore } from "../modules/Hotels/store";
 
 const RootStoreModel = types.model({
   authorization: types.late(() => AuthStore),

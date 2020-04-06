@@ -45,7 +45,7 @@ export const menuItems: MenuItemType[] = [
     id: 4,
     title: "Hotels",
     icon: <BankOutlined />,
-    route: "/"
+    route: "/hotels"
   },
   {
     id: 5,
