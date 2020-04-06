@@ -1,7 +1,9 @@
+import { EmptyLayout } from "../layout/EmptyLayout/EmptyLayout..component";
 import { Dashboard } from "./Dashboard";
 import { ChooseHotel } from "./ChooseHotel";
 import { wrapComponent } from "./util/routeWrapper";
 import { Login } from "./Authorization/Login";
+import { HeaderSiderLayout } from "../layout/HeaderSiderLayout";
 
 export type RouteType = {
   name: string;
@@ -14,7 +16,8 @@ export const routes = [
     name: "Login",
     route: wrapComponent(Login, { path: "/login", key: 0 }),
     path: "/login",
-    component: Login
+    component: Login,
+    layout: EmptyLayout
   },
   {
     name: "Choose Hotel",
@@ -23,12 +26,14 @@ export const routes = [
       key: 1
     }),
     path: "/chooseHotel",
-    component: ChooseHotel
+    component: ChooseHotel,
+    layout: EmptyLayout
   },
   {
     name: "Dashboard",
     route: wrapComponent(Dashboard, { path: "/", key: 2 }),
     path: "/",
-    component: Dashboard
+    component: Dashboard,
+    layout: HeaderSiderLayout
   }
 ];
