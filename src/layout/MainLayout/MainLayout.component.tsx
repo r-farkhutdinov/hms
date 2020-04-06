@@ -3,7 +3,7 @@ import { useStore } from "../../core/util";
 import useRouter from "use-react-router";
 import { Helmet } from "react-helmet";
 import { matchRoute } from "../../modules/util/routeMatcher";
-import { Login } from "../../modules/Authorization/Login";
+import { Login } from "../../modules/Authorization/components/Login";
 import { Switch, Route } from "react-router";
 import { routes } from "../../modules/routes";
 

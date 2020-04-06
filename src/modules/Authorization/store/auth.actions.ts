@@ -23,7 +23,16 @@ export const AuthActions = (self: AuthModelType) => {
     }
   });
 
+  const logout = (history: any) => {
+    self.user = undefined;
+    self.isAuthorized = false;
+    localStorage.removeItem("user");
+    localStorage.removeItem("token");
+    history.push("/chooseHotel");
+  };
+
   return {
-    login
+    login,
+    logout
   };
 };

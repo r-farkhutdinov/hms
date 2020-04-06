@@ -1,31 +1,35 @@
 import * as React from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { Layout, Breadcrumb, Menu } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  HomeOutlined
+  HomeOutlined,
+  ShopOutlined
 } from "@ant-design/icons";
 import style from "./HeaderSiderLayout.less";
-import * as siderItems from "./siderItems.json";
+import { menuItems, MenuItemType } from "./menu";
+import { useStore } from "../../core/util";
 
 const { Content, Footer, Sider, Header } = Layout;
 
-const MenuItems = siderItems.menu.map((item: any) => (
+const MenuItems = menuItems.map((item: MenuItemType) => (
   <Menu.Item key={item.id}>
-    <NavLink exact to={item.route}>
-      {item.title}
-    </NavLink>
+    {item.icon}
+    <Link to={item.route}>{item.title}</Link>
   </Menu.Item>
 ));
 
 export const HeaderSiderLayout: React.FC = props => {
   const [collapsed, setCollapsed] = React.useState(false);
 
+  const { hotels } = useStore();
+  const { selectedHotel } = hotels;
+
   return (
     <Layout className={style.layout}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Link to="/">
+        <Link to="/" className={style.homeLink}>
           <HomeOutlined className={style.logo} />
         </Link>
         <Menu theme="dark" defaultSelectedKeys={["0"]} mode="inline">
@@ -61,17 +65,15 @@ export const HeaderSiderLayout: React.FC = props => {
             </Breadcrumb>
           </div>
           <span className={style.meta}>
-            {/* <Icon type="market" /> */}
+            <ShopOutlined />{" "}
             <span>
-              <Link to={"/chooseHotel"}>Change hotel</Link>
+              {(selectedHotel && selectedHotel.name) || "No hotel chosen"}{" "}
+              <Link to={"/chooseHotel"}>(change)</Link>
             </span>
           </span>
         </Header>
         <Content className={style.content}>
-          <div className={style.panel}>
-            {/* <Switch>{routes.map(route => route.route)}</Switch> */}
-            {props.children}
-          </div>
+          <div className={style.panel}>{props.children}</div>
         </Content>
         <Footer className={style.footer}>Ruslan Farkhutdinov, 2020</Footer>
       </Layout>

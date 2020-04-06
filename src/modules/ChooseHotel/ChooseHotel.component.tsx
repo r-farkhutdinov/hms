@@ -10,14 +10,20 @@ import useRouter from "use-react-router";
 
 export const ChooseHotel: React.FC = observer(() => {
   const { hotels, authorization } = useStore();
-  const { loadHotels, hotels: hotelsOptions, selectHotel, loading } = hotels;
+  const {
+    loadHotels,
+    hotels: hotelsOptions,
+    selectHotel,
+    loading,
+    selectedHotelId
+  } = hotels;
   const { history } = useRouter();
 
   React.useEffect(() => {
     loadHotels((authorization.user && authorization.user.id) || 0); // TODO: remove when ready
   }, []);
 
-  const [hotel, setHotel] = React.useState<number>();
+  const [hotel, setHotel] = React.useState<number>(selectedHotelId);
 
   const chooseHotel = () => {
     if (hotel === undefined) {

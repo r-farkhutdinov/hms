@@ -3,7 +3,7 @@ import { Form, Input, Button, Spin, message } from "antd";
 import { UserOutlined, BankOutlined, LockOutlined } from "@ant-design/icons";
 import style from "./LoginForm.less";
 import Fade from "react-reveal/Fade";
-import { useStore } from "../../../../core/util";
+import { useStore } from "../../../../../core/util";
 import useRouter from "use-react-router";
 
 type Props = {};

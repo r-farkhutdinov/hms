@@ -8,9 +8,11 @@ const HotelModel = types.model({
 });
 
 export const HotelsModel = types.model({
-  hotel: types.maybe(types.number),
+  selectedHotelId: types.maybe(types.number),
+  selectedHotel: types.maybe(HotelModel),
   hotels: types.maybe(types.array(HotelModel)),
   loading: types.boolean
 });
 
 export type HotelsModelType = Instance<typeof HotelsModel>;
+export type HotelModelType = Instance<typeof HotelModel>;
