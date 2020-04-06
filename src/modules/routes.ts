@@ -1,3 +1,4 @@
+import { HotelSettings } from "./Hotels/Settings";
 import { Hotels } from "./Hotels";
 import { Logout } from "./Authorization/components/Logout";
 import { EmptyLayout } from "../layout/EmptyLayout";
@@ -29,6 +30,12 @@ export const routes = [
     name: "Hotels",
     path: "/hotels",
     component: Hotels,
+    layout: HeaderSiderLayout
+  },
+  {
+    name: "Hotel settings",
+    path: "/hotels/:id",
+    component: HotelSettings,
     layout: HeaderSiderLayout
   },
   {

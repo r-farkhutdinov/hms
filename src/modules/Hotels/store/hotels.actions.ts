@@ -1,4 +1,4 @@
-import { mockHotels } from "../../../services/hotels/mock";
+import { mockHotels, mockHotelDetails } from "../../../services/hotels/mock";
 import { HotelsModelType } from "./hotels.model";
 import { flow } from "mobx-state-tree";
 import { message } from "antd";
@@ -16,15 +16,27 @@ export const HotelsActions = (self: HotelsModelType) => {
     }
   });
 
-  const selectHotel = function(hotelId: number, history: any) {
+  const loadHotelDetails = flow(function*(hotelId: number) {
+    try {
+      self.hotelDetailsLoading = true;
+      const hotel = yield mockHotelDetails(hotelId);
+      self.hotelDetails = hotel;
+      self.hotelDetailsLoading = false;
+    } catch (err) {
+      message.error(err);
+    }
+  });
+
+  const selectHotel = (hotelId: number, history: any) => {
     self.selectedHotelId = hotelId;
     self.selectedHotel = toJS(self.hotels).find(h => h.id === hotelId);
     localStorage.setItem("hotel", JSON.stringify(self.selectedHotel));
-    history.goBack();
+    history.push("/");
   };
 
   return {
     loadHotels,
-    selectHotel
+    selectHotel,
+    loadHotelDetails
   };
 };

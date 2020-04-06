@@ -5,6 +5,8 @@ import { useStore } from "../../core/util";
 import { observer } from "mobx-react";
 import { SettingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
+import style from "./Hotels.less";
+import { HotelDetails } from "./Details";
 
 export const Hotels: React.FC = observer(() => {
   const { hotels, authorization } = useStore();
@@ -14,9 +16,22 @@ export const Hotels: React.FC = observer(() => {
     loadHotels((authorization.user && authorization.user.id) || 0); // TODO: remove when ready
   }, []);
 
+  const [showDrawer, setShowDrawer] = React.useState<boolean>(false);
+
+  const [hotelId, setHotelId] = React.useState<number>(selectedHotelId);
+
+  const handleHotelDetailsClick = (hotel: number) => {
+    setHotelId(hotel);
+    setShowDrawer(true);
+  };
+
   return (
     <>
-      <h1>Hotels</h1>
+      <HotelDetails
+        show={showDrawer}
+        setShow={setShowDrawer}
+        hotelId={hotelId}
+      />
       <List
         className="demo-loadmore-list"
         loading={loading}
@@ -32,7 +47,14 @@ export const Hotels: React.FC = observer(() => {
           >
             <Skeleton title={false} loading={loading} active>
               <List.Item.Meta
-                title={<a href="https://ant.design">{item.name}</a>}
+                title={
+                  <span
+                    className={style.name}
+                    onClick={() => handleHotelDetailsClick(item.id)}
+                  >
+                    {item.name}
+                  </span>
+                }
                 description="Ant Design, a design language for background applications, is refined by Ant UED Team"
               />
               <div>

@@ -5,11 +5,14 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
-  ShopOutlined
+  ShopOutlined,
+  GithubOutlined
 } from "@ant-design/icons";
 import style from "./HeaderSiderLayout.less";
 import { menuItems, MenuItemType } from "./menu";
 import { useStore } from "../../core/util";
+import useRouter from "use-react-router";
+import { matchRoute } from "../../modules/util/routeMatcher";
 
 const { Content, Footer, Sider, Header } = Layout;
 
@@ -21,10 +24,14 @@ const MenuItems = menuItems.map((item: MenuItemType) => (
 ));
 
 export const HeaderSiderLayout: React.FC = props => {
-  const [collapsed, setCollapsed] = React.useState(false);
+  const { location } = useRouter();
 
-  const { hotels } = useStore();
+  const { hotels, authorization } = useStore();
+  const { isAuthorized } = authorization;
+
   const { selectedHotel } = hotels;
+
+  const [collapsed, setCollapsed] = React.useState(false);
 
   return (
     <Layout className={style.layout}>
@@ -73,9 +80,17 @@ export const HeaderSiderLayout: React.FC = props => {
           </span>
         </Header>
         <Content className={style.content}>
+          <h1 className={style.title}>
+            {matchRoute(location.pathname, isAuthorized)}
+          </h1>
           <div className={style.panel}>{props.children}</div>
         </Content>
-        <Footer className={style.footer}>Ruslan Farkhutdinov, 2020</Footer>
+        <Footer className={style.footer}>
+          <a href="https://github.com/r-farkhutdinov">
+            <GithubOutlined /> Ruslan Farkhutdinov
+          </a>
+          , 2020
+        </Footer>
       </Layout>
     </Layout>
   );

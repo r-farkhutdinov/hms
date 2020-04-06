@@ -11,6 +11,7 @@ const selectedHotelId = selectedHotel ? selectedHotel.id : undefined;
 export const createHotelsStore = () =>
   HotelsStore.create({
     loading: false,
+    hotelDetailsLoading: false,
     selectedHotel,
     selectedHotelId
   });
