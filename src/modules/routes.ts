@@ -1,3 +1,4 @@
+import { Guests } from "./Guests";
 import { NotFound } from "./NotFound";
 import { HotelSettings } from "./Hotels/Settings";
 import { Hotels } from "./Hotels";
@@ -45,6 +46,13 @@ export const routes = [
     component: Logout,
     layout: HeaderSiderLayout
   },
+  {
+    name: "Guests",
+    path: "/guests",
+    component: Guests,
+    layout: HeaderSiderLayout
+  },
+  // Last matches. All routes have to be added above
   {
     name: "Dashboard",
     path: "/",
