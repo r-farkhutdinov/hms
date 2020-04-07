@@ -1,3 +1,4 @@
+import { NotFound } from "./NotFound";
 import { HotelSettings } from "./Hotels/Settings";
 import { Hotels } from "./Hotels";
 import { Logout } from "./Authorization/components/Logout";
@@ -48,6 +49,12 @@ export const routes = [
     name: "Dashboard",
     path: "/",
     component: Dashboard,
+    layout: HeaderSiderLayout
+  },
+  {
+    name: "No Match",
+    path: "*",
+    component: NotFound,
     layout: HeaderSiderLayout
   }
 ];

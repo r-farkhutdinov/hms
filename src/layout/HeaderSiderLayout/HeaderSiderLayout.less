@@ -1,9 +1,22 @@
 @footerHeight: 70px;
 @headerHeight: 64px;
-@contentMargin: 16px;
+@contentMargin: 70px;
 
 .layout {
   min-height: 100vh;
+
+  .menuItem {
+    transition: 0.2s;
+
+    &:hover {
+      a {
+        color: white;
+      }
+    }
+    a {
+      color: white;
+    }
+  }
 
   .logo {
     text-align: center;
@@ -11,6 +24,7 @@
     padding: 20px 20px;
     color: white;
     width: 100%;
+    height: @headerHeight;
   }
 
   .header {

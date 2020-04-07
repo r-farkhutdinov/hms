@@ -19,7 +19,9 @@ const { Content, Footer, Sider, Header } = Layout;
 const MenuItems = menuItems.map((item: MenuItemType) => (
   <Menu.Item key={item.id}>
     {item.icon}
-    <Link to={item.route}>{item.title}</Link>
+    <span className={style.menuItem}>
+      <Link to={item.route}>{item.title}</Link>
+    </span>
   </Menu.Item>
 ));
 

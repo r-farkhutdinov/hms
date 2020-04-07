@@ -23,7 +23,7 @@ export const MainLayout: React.FC = props => {
       ) : (
         <Switch>
           {routes.map((r, key) => (
-            <Route key={key} path={r.path}>
+            <Route exact key={key} path={r.path}>
               <r.layout>
                 <r.component />
               </r.layout>

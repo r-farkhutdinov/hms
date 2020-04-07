@@ -1,4 +1,21 @@
 import { routes } from "../routes";
+import { matchPath } from "react-router";
 
-export const matchRoute = (route: string, isAuthorized: boolean): string =>
-  isAuthorized ? routes.find(r => r.path === route).name : "Login";
+export const matchRoute = (route: string, isAuthorized: boolean): string => {
+  if (isAuthorized) {
+    if (
+      matchPath(
+        route,
+        routes.map(r => r.path)
+      )
+    ) {
+      const result = routes.find(r => r.path === route);
+
+      return (result && result.name) || "No Match";
+    } else {
+      return "Not found";
+    }
+  } else {
+    return "Login";
+  }
+};
