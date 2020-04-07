@@ -22,6 +22,7 @@ const VisaModel = types.model({
 });
 
 const GuestModel = types.model({
+  id: types.number,
   firstName: types.string,
   lastName: types.string,
   country: CountryModel,
@@ -32,7 +33,8 @@ const GuestModel = types.model({
 const GuestReducedModel = types.model({
   firstName: types.string,
   lastName: types.string,
-  country: CountryModel
+  country: CountryModel,
+  id: types.number
 });
 
 export const GuestsModel = types.model({
@@ -42,3 +44,5 @@ export const GuestsModel = types.model({
 });
 
 export type GuestsModelType = Instance<typeof GuestsModel>;
+export type GuestModelType = Instance<typeof GuestModel>;
+export type GuestReducedModelType = Instance<typeof GuestReducedModel>;
