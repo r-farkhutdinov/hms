@@ -6,7 +6,8 @@ import {
   PercentageOutlined,
   BankOutlined,
   ShopOutlined,
-  UnlockOutlined
+  UnlockOutlined,
+  BuildOutlined
 } from "@ant-design/icons";
 
 export type MenuItemType = {
@@ -25,36 +26,42 @@ export const menuItems: MenuItemType[] = [
   },
   {
     id: 1,
-    title: "Guests",
-    icon: <TeamOutlined />,
-    route: "/"
+    title: "Bookings",
+    icon: <BuildOutlined />,
+    route: "/bookings"
   },
   {
     id: 2,
-    title: "Services",
-    icon: <CheckOutlined />,
-    route: "/"
+    title: "Guests",
+    icon: <TeamOutlined />,
+    route: "/guests"
   },
   {
     id: 3,
-    title: "Prices",
-    icon: <PercentageOutlined />,
-    route: "/"
+    title: "Services",
+    icon: <CheckOutlined />,
+    route: "/services"
   },
   {
     id: 4,
+    title: "Prices",
+    icon: <PercentageOutlined />,
+    route: "/prices"
+  },
+  {
+    id: 5,
     title: "Hotels",
     icon: <BankOutlined />,
     route: "/hotels"
   },
   {
-    id: 5,
+    id: 6,
     title: "Rooms",
     icon: <ShopOutlined />,
-    route: "/"
+    route: "/rooms"
   },
   {
-    id: 6,
+    id: 7,
     title: "Log out",
     icon: <UnlockOutlined />,
     route: "/logout"

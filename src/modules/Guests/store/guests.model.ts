@@ -39,8 +39,8 @@ const GuestReducedModel = types.model({
 
 export const GuestsModel = types.model({
   loading: types.boolean,
-  guestsList: types.array(GuestReducedModel),
-  guestDetails: GuestModel
+  guestsList: types.maybe(types.array(GuestReducedModel)),
+  guestDetails: types.maybe(GuestModel)
 });
 
 export type GuestsModelType = Instance<typeof GuestsModel>;
