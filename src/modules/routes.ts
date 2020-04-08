@@ -1,3 +1,4 @@
+import { Bookings } from "./Bookings";
 import { Guests } from "./Guests";
 import { NotFound } from "./NotFound";
 import { HotelSettings } from "./Hotels/Settings";
@@ -50,6 +51,12 @@ export const routes = [
     name: "Guests",
     path: "/guests",
     component: Guests,
+    layout: HeaderSiderLayout
+  },
+  {
+    name: "Bookings",
+    path: "/bookings",
+    component: Bookings,
     layout: HeaderSiderLayout
   },
   // Last matches. All routes have to be added above
