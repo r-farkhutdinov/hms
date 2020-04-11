@@ -6,7 +6,8 @@ export const I18nStore = I18nModel.actions(I18nActions);
 
 export const createI18nStore = () =>
   I18nStore.create({
-    locale: "en"
+    locale: "en",
+    loading: false
   });
 
 export type I18nModelType = Instance<typeof I18nModel>;

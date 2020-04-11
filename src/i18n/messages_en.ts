@@ -1,3 +1,5 @@
 export const en = {
-  dashboard: "Dashboard"
+  author: "Ruslan Farkhutdinov",
+  dashboard: "Dashboard",
+  logout: "Logout"
 };

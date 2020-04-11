@@ -5,7 +5,6 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   HomeOutlined,
-  ShopOutlined,
   GithubOutlined
 } from "@ant-design/icons";
 import style from "./HeaderSiderLayout.less";
@@ -14,6 +13,11 @@ import { useStore } from "../../core/util";
 import useRouter from "use-react-router";
 import { matchRoute } from "../util/routeMatcher";
 import { matchRouteMenu } from "../util/routeMenuMatcher";
+import { useIntl } from "react-intl";
+import { HotelDropdown } from "./HotelDropdown";
+import { LocaleSelect } from "./LocaleSelect";
+import { observer } from "mobx-react";
+import { UserMeta } from "./UserMeta";
 
 const { Content, Footer, Sider, Header } = Layout;
 
@@ -26,25 +30,21 @@ const MenuItems = menuItems.map((item: MenuItemType) => (
   </Menu.Item>
 ));
 
-export const HeaderSiderLayout: React.FC = props => {
+export const HeaderSiderLayout: React.FC = observer(props => {
   const { location } = useRouter();
-
-  const { hotels, authorization } = useStore();
-  const { isAuthorized } = authorization;
-
-  const { selectedHotel } = hotels;
-
+  const { formatMessage: f } = useIntl();
+  const { hotels, authorization, i18n } = useStore();
   const [collapsed, setCollapsed] = React.useState(false);
-
   const key = matchRouteMenu(location.pathname);
 
   const [selectedKey, setSelectedKey] = React.useState<number>(key);
 
+  const { isAuthorized, user } = authorization;
+  const { selectedHotel } = hotels;
+
   React.useEffect(() => {
     setSelectedKey(key);
   }, []);
-
-  console.log(key);
 
   return (
     <Layout className={style.layout}>
@@ -88,13 +88,11 @@ export const HeaderSiderLayout: React.FC = props => {
                 )} */}
             </Breadcrumb>
           </div>
-          <span className={style.meta}>
-            <ShopOutlined />{" "}
-            <span>
-              {(selectedHotel && selectedHotel.name) || "No hotel chosen"}{" "}
-              <Link to={"/chooseHotel"}>(change)</Link>
-            </span>
-          </span>
+          <div className={style.meta}>
+            <UserMeta user={user} />
+            <HotelDropdown selectedHotel={selectedHotel} />
+            <LocaleSelect i18n={i18n} />
+          </div>
         </Header>
         <Content className={style.content}>
           <h1 className={style.title}>
@@ -104,11 +102,11 @@ export const HeaderSiderLayout: React.FC = props => {
         </Content>
         <Footer className={style.footer}>
           <a href="https://github.com/r-farkhutdinov">
-            <GithubOutlined /> Ruslan Farkhutdinov
+            <GithubOutlined /> {f({ id: "author" })}
           </a>
           , 2020
         </Footer>
       </Layout>
     </Layout>
   );
-};
+});

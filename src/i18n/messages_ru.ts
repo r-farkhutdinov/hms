@@ -1,3 +1,5 @@
 export const ru = {
-  dashboard: "Главная"
+  author: "Руслан Фархутдинов",
+  dashboard: "Главная",
+  logout: "Выйти"
 };
