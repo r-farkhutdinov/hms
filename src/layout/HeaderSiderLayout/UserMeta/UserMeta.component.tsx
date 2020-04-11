@@ -22,14 +22,14 @@ export const UserMeta: React.FC<Props> = ({ user }) => {
   const { formatMessage: f } = useIntl();
 
   return (
-    <div className={style.user}>
-      <UserOutlined />
-      <Dropdown overlay={menu(f)} trigger={["click"]}>
+    <Dropdown overlay={menu(f)} trigger={["click"]}>
+      <div className={style.user}>
+        <UserOutlined />
         <span>
           <span className={style.userName}>{user.name}</span>
           <DownOutlined />
         </span>
-      </Dropdown>
-    </div>
+      </div>
+    </Dropdown>
   );
 };
