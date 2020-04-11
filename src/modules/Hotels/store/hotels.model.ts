@@ -12,7 +12,7 @@ import { types, Instance } from "mobx-state-tree";
 //   rooms: types.array(Room)
 // });
 
-const HotelModel = types.model({
+export const HotelModel = types.model({
   id: types.number,
   name: types.string,
   location: types.string,

@@ -4,7 +4,7 @@ import { Instance } from "mobx-state-tree";
 
 export const BookingsStore = BookingsModel.actions(BookingsActions);
 
-export const createAuthStore = () =>
+export const createBookingsStore = () =>
   BookingsStore.create({
     bookings: [],
     loading: false

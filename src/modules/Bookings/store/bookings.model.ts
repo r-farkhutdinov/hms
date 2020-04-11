@@ -1,12 +1,16 @@
+import { HotelModel } from "../../Hotels/store/hotels.model";
 import { types, Instance } from "mobx-state-tree";
 
 export const Booking = types.model({
-  cinDate: types.number,
-  coutDate: types.number,
-  totalProce: types.number,
+  id: types.number,
+  cinDate: types.string,
+  coutDate: types.string,
+  totalPrice: types.number,
   room: types.number,
   earlyCin: types.boolean,
+  hotel: HotelModel,
   guest: types.model({
+    id: types.number,
     name: types.string
   })
 });
