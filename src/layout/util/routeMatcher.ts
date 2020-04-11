@@ -1,4 +1,4 @@
-import { routes } from "../routes";
+import { routes } from "../../modules/routes";
 import { matchPath } from "react-router";
 
 export const matchRoute = (route: string, isAuthorized: boolean): string => {

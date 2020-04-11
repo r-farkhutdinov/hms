@@ -19,3 +19,4 @@ export const AuthModel = types.model({
 });
 
 export type AuthModelType = Instance<typeof AuthModel>;
+export type UserModelType = Instance<typeof UserModel>;

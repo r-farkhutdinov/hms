@@ -12,7 +12,8 @@ import style from "./HeaderSiderLayout.less";
 import { menuItems, MenuItemType } from "./menu";
 import { useStore } from "../../core/util";
 import useRouter from "use-react-router";
-import { matchRoute } from "../../modules/util/routeMatcher";
+import { matchRoute } from "../util/routeMatcher";
+import { matchRouteMenu } from "../util/routeMenuMatcher";
 
 const { Content, Footer, Sider, Header } = Layout;
 
@@ -35,13 +36,27 @@ export const HeaderSiderLayout: React.FC = props => {
 
   const [collapsed, setCollapsed] = React.useState(false);
 
+  const key = matchRouteMenu(location.pathname);
+
+  const [selectedKey, setSelectedKey] = React.useState<number>(key);
+
+  React.useEffect(() => {
+    setSelectedKey(key);
+  }, []);
+
+  console.log(key);
+
   return (
     <Layout className={style.layout}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <Link to="/" className={style.homeLink}>
           <HomeOutlined className={style.logo} />
         </Link>
-        <Menu theme="dark" defaultSelectedKeys={["0"]} mode="inline">
+        <Menu
+          theme="dark"
+          selectedKeys={[selectedKey.toString()]}
+          mode="inline"
+        >
           {MenuItems}
         </Menu>
       </Sider>

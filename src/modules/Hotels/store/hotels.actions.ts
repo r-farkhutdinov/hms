@@ -3,6 +3,7 @@ import { HotelsModelType } from "./hotels.model";
 import { flow } from "mobx-state-tree";
 import { message } from "antd";
 import { toJS } from "mobx";
+import { ls } from "../../../core/ls_utils";
 
 export const HotelsActions = (self: HotelsModelType) => {
   const loadHotels = flow(function*(userId: number) {
@@ -30,7 +31,7 @@ export const HotelsActions = (self: HotelsModelType) => {
   const selectHotel = (hotelId: number, history: any) => {
     self.selectedHotelId = hotelId;
     self.selectedHotel = toJS(self.hotels).find(h => h.id === hotelId);
-    localStorage.setItem("hotel", JSON.stringify(self.selectedHotel));
+    ls.set.hotel(self.selectedHotel);
     history.push("/");
   };
 

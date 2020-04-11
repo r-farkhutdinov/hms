@@ -1,3 +1,4 @@
+import { ls } from "./../../../core/ls_utils";
 import { AuthModelType } from "./auth.model";
 import { flow } from "mobx-state-tree";
 import { message } from "antd";
@@ -14,8 +15,8 @@ export const AuthActions = (self: AuthModelType) => {
       const authData = yield auth.mockAuth(username, password);
       self.user = authData;
       self.isAuthorized = true;
-      localStorage.setItem("user", JSON.stringify(self.user));
-      localStorage.setItem("token", "test_debug_token");
+      ls.set.user(self.user);
+      ls.set.token("test_debug_token");
       self.loading = false;
       history.push("/chooseHotel");
     } catch (err) {
@@ -26,8 +27,7 @@ export const AuthActions = (self: AuthModelType) => {
   const logout = (history: any) => {
     self.user = undefined;
     self.isAuthorized = false;
-    localStorage.removeItem("user");
-    localStorage.removeItem("token");
+    ls.clear();
     history.push("/chooseHotel");
   };
 

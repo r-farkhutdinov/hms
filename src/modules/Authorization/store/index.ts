@@ -1,11 +1,12 @@
+import { ls } from "../../../core/ls_utils";
 import { AuthModel } from "./auth.model";
 import { AuthActions } from "./auth.actions";
 import { Instance } from "mobx-state-tree";
 
 export const AuthStore = AuthModel.actions(AuthActions);
 
-const userJSON = localStorage.getItem("user");
-const tokenJSON = localStorage.getItem("token");
+const userJSON = ls.get.user();
+const tokenJSON = ls.get.token();
 const user = userJSON ? JSON.parse(userJSON) : undefined;
 const token = tokenJSON;
 
