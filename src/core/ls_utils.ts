@@ -17,22 +17,30 @@ const setHotel = (hotel: HotelModelType) => {
   localStorage.setItem("hotel", JSON.stringify(hotel));
 };
 
+const setLocale = (locale: string) => {
+  localStorage.setItem("locale", locale);
+};
+
 const getUser = () => localStorage.getItem("user");
 
 const getHotel = () => localStorage.getItem("hotel");
 
 const getToken = () => localStorage.getItem("token");
 
+const getLocale = () => localStorage.getItem("locale");
+
 export const ls = {
   get: {
     user: getUser,
     hotel: getHotel,
-    token: getToken
+    token: getToken,
+    locale: getLocale
   },
   set: {
     user: setUser,
     hotel: setHotel,
-    token: setToken
+    token: setToken,
+    locale: setLocale
   },
   clear: clearLocalStorage
 };

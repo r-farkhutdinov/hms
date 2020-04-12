@@ -32,7 +32,7 @@ export const HotelsActions = (self: HotelsModelType) => {
     self.selectedHotelId = hotelId;
     self.selectedHotel = toJS(self.hotels).find(h => h.id === hotelId);
     ls.set.hotel(self.selectedHotel);
-    history.push("/");
+    history.push("/dashboard");
   };
 
   return {

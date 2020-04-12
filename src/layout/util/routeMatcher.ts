@@ -11,7 +11,7 @@ export const matchRoute = (route: string, isAuthorized: boolean): string => {
     ) {
       const result = routes.find(r => r.path === route);
 
-      return (result && result.name) || "No Match";
+      return (result && result.name) || "noMatch";
     } else {
       return "Not found";
     }

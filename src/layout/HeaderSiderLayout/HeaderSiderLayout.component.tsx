@@ -21,14 +21,15 @@ import { UserMeta } from "./UserMeta";
 
 const { Content, Footer, Sider, Header } = Layout;
 
-const MenuItems = menuItems.map((item: MenuItemType) => (
-  <Menu.Item key={item.id}>
-    {item.icon}
-    <span className={style.menuItem}>
-      <Link to={item.route}>{item.title}</Link>
-    </span>
-  </Menu.Item>
-));
+const MenuItems = f =>
+  menuItems.map((item: MenuItemType) => (
+    <Menu.Item key={item.id}>
+      {item.icon}
+      <span className={style.menuItem}>
+        <Link to={item.route}>{f({ id: item.title })}</Link>
+      </span>
+    </Menu.Item>
+  ));
 
 export const HeaderSiderLayout: React.FC = observer(props => {
   const { location } = useRouter();
@@ -44,12 +45,14 @@ export const HeaderSiderLayout: React.FC = observer(props => {
 
   React.useEffect(() => {
     setSelectedKey(key);
-  }, []);
+  }, [location]);
+
+  console.log(key);
 
   return (
     <Layout className={style.layout}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
-        <Link to="/" className={style.homeLink}>
+        <Link to="/dashboard" className={style.homeLink}>
           <HomeOutlined className={style.logo} />
         </Link>
         <Menu
@@ -57,7 +60,7 @@ export const HeaderSiderLayout: React.FC = observer(props => {
           selectedKeys={[selectedKey.toString()]}
           mode="inline"
         >
-          {MenuItems}
+          {MenuItems(f)}
         </Menu>
       </Sider>
       <Layout>
@@ -96,7 +99,7 @@ export const HeaderSiderLayout: React.FC = observer(props => {
         </Header>
         <Content className={style.content}>
           <h1 className={style.title}>
-            {matchRoute(location.pathname, isAuthorized)}
+            {f({ id: matchRoute(location.pathname, isAuthorized) })}
           </h1>
           <div className={style.panel}>{props.children}</div>
         </Content>

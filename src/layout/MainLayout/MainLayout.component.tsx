@@ -6,17 +6,21 @@ import { matchRoute } from "../util/routeMatcher";
 import { Login } from "../../modules/Authorization/components/Login";
 import { Switch, Route } from "react-router";
 import { routes } from "../../modules/routes";
+import { useIntl } from "react-intl";
 
 export const MainLayout: React.FC = props => {
   const { authorization } = useStore();
   const { location } = useRouter();
+  const { formatMessage: f } = useIntl();
 
   const { isAuthorized } = authorization;
 
   return (
     <>
       <Helmet>
-        <title>HMS | {matchRoute(location.pathname, isAuthorized)}</title>
+        <title>
+          HMS | {f({ id: matchRoute(location.pathname, isAuthorized) })}
+        </title>
       </Helmet>
       {!isAuthorized ? (
         <Login />

@@ -7,10 +7,12 @@ import { SettingOutlined } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 import style from "./Hotels.less";
 import { HotelDetails } from "./Details";
+import { useIntl } from "react-intl";
 
 export const Hotels: React.FC = observer(() => {
   const { hotels, authorization } = useStore();
   const { loadHotels, hotels: hotelsList, loading, selectedHotelId } = hotels;
+  const { formatMessage: f } = useIntl();
 
   React.useEffect(() => {
     loadHotels((authorization.user && authorization.user.id) || 0); // TODO: remove when ready
@@ -58,7 +60,7 @@ export const Hotels: React.FC = observer(() => {
                 description="Ant Design, a design language for background applications, is refined by Ant UED Team"
               />
               <div>
-                {selectedHotelId === item.id ? "Currently selected" : ""}
+                {selectedHotelId === item.id ? f({ id: "hotelSelected" }) : ""}
               </div>
             </Skeleton>
           </List.Item>

@@ -20,49 +20,49 @@ export type MenuItemType = {
 export const menuItems: MenuItemType[] = [
   {
     id: 0,
-    title: "Dashboard",
+    title: "dashboard",
     icon: <HomeOutlined />,
-    route: "/"
+    route: "/dashboard"
   },
   {
     id: 1,
-    title: "Bookings",
+    title: "bookings",
     icon: <BuildOutlined />,
     route: "/bookings"
   },
   {
     id: 2,
-    title: "Guests",
+    title: "guests",
     icon: <TeamOutlined />,
     route: "/guests"
   },
   {
     id: 3,
-    title: "Services",
+    title: "services",
     icon: <CheckOutlined />,
     route: "/services"
   },
   {
     id: 4,
-    title: "Prices",
+    title: "prices",
     icon: <PercentageOutlined />,
     route: "/prices"
   },
   {
     id: 5,
-    title: "Hotels",
+    title: "hotels",
     icon: <BankOutlined />,
     route: "/hotels"
   },
   {
     id: 6,
-    title: "Rooms",
+    title: "rooms",
     icon: <ShopOutlined />,
     route: "/rooms"
   },
   {
     id: 7,
-    title: "Log out",
+    title: "logout",
     icon: <UnlockOutlined />,
     route: "/logout"
   }

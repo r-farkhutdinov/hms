@@ -18,56 +18,56 @@ export type RouteType = {
 
 export const routes = [
   {
-    name: "Login",
+    name: "login",
     path: "/login",
     component: Login,
     layout: EmptyLayout
   },
   {
-    name: "Choose Hotel",
+    name: "chooseHotel",
     path: "/chooseHotel",
     component: ChooseHotel,
     layout: EmptyLayout
   },
   {
-    name: "Hotels",
+    name: "hotels",
     path: "/hotels",
     component: Hotels,
     layout: HeaderSiderLayout
   },
   {
-    name: "Hotel settings",
+    name: "hotelSettings",
     path: "/hotels/:id",
     component: HotelSettings,
     layout: HeaderSiderLayout
   },
   {
-    name: "Logout",
+    name: "logout",
     path: "/logout",
     component: Logout,
     layout: HeaderSiderLayout
   },
   {
-    name: "Guests",
+    name: "guests",
     path: "/guests",
     component: Guests,
     layout: HeaderSiderLayout
   },
   {
-    name: "Bookings",
+    name: "bookings",
     path: "/bookings",
     component: Bookings,
     layout: HeaderSiderLayout
   },
   // Last matches. All routes have to be added above
   {
-    name: "Dashboard",
-    path: "/",
+    name: "dashboard",
+    path: "/dashboard",
     component: Dashboard,
     layout: HeaderSiderLayout
   },
   {
-    name: "No Match",
+    name: "noMatch",
     path: "*",
     component: NotFound,
     layout: HeaderSiderLayout
