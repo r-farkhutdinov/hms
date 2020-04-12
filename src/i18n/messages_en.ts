@@ -21,5 +21,8 @@ export const en = {
   backHome: "Back home",
 
   //hotels
-  hotelSelected: "Currently selected"
+  hotelSelected: "Currently selected",
+
+  //bookings
+  config: "Configuration"
 };

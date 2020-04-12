@@ -21,5 +21,8 @@ export const ru = {
   backHome: "На главную",
 
   //hotels
-  hotelSelected: "Выбран"
+  hotelSelected: "Выбран",
+
+  //bookings
+  config: "Параметры"
 };

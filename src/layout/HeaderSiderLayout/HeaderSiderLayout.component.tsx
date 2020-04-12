@@ -47,8 +47,6 @@ export const HeaderSiderLayout: React.FC = observer(props => {
     setSelectedKey(key);
   }, [location]);
 
-  console.log(key);
-
   return (
     <Layout className={style.layout}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
@@ -79,16 +77,11 @@ export const HeaderSiderLayout: React.FC = observer(props => {
 
           <div className={style.breadcrumb}>
             <Breadcrumb>
-              {/* <Breadcrumb.Item>
-                  <Link to={breadcrumb.first.path}>
-                    <span>{breadcrumb.first.name}</span>
-                  </Link>
-                </Breadcrumb.Item>
-                {breadcrumb.second && (
-                  <Breadcrumb.Item>
-                    <span>{breadcrumb.second}</span>
-                  </Breadcrumb.Item>
-                )} */}
+              <Breadcrumb.Item>
+                <span>
+                  {f({ id: matchRoute(location.pathname, isAuthorized) })}
+                </span>
+              </Breadcrumb.Item>
             </Breadcrumb>
           </div>
           <div className={style.meta}>

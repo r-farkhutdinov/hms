@@ -2,6 +2,8 @@ import * as React from "react";
 import { useStore } from "../../core/util";
 import dayjs from "dayjs";
 import { observer } from "mobx-react";
+import { FilterPanel } from "./components/FilterPanel";
+import { BookingsTable } from "./components/BookingsTable";
 
 export const Bookings: React.FC = observer(() => {
   const { bookings: bookingsStore } = useStore();
@@ -13,5 +15,10 @@ export const Bookings: React.FC = observer(() => {
 
   console.log(bookings);
 
-  return <></>;
+  return (
+    <>
+      <FilterPanel />
+      <BookingsTable />
+    </>
+  );
 });
