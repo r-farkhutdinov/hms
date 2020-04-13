@@ -24,14 +24,13 @@ const { Content, Footer, Sider, Header } = Layout;
 const MenuItems = f =>
   menuItems.map((item: MenuItemType) => (
     <Menu.Item key={item.id}>
-      {item.icon}
-      <span className={style.menuItem}>
-        <Link to={item.route}>{f({ id: item.title })}</Link>
-      </span>
+      <Link to={item.route}>
+        {item.icon} <span>{f({ id: item.title })}</span>
+      </Link>
     </Menu.Item>
   ));
 
-export const HeaderSiderLayout: React.FC = observer(props => {
+export const HeaderSiderLayout: React.FC = observer(({ children }) => {
   const { location } = useRouter();
   const { formatMessage: f } = useIntl();
   const { hotels, authorization, i18n } = useStore();
@@ -94,7 +93,7 @@ export const HeaderSiderLayout: React.FC = observer(props => {
           <h1 className={style.title}>
             {f({ id: matchRoute(location.pathname, isAuthorized) })}
           </h1>
-          <div className={style.panel}>{props.children}</div>
+          <div className={style.panel}>{children}</div>
         </Content>
         <Footer className={style.footer}>
           <a href="https://github.com/r-farkhutdinov">
