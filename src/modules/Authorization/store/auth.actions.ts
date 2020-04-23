@@ -28,7 +28,7 @@ export const AuthActions = (self: AuthModelType) => {
     self.user = undefined;
     self.isAuthorized = false;
     ls.clear();
-    history.push("/chooseHotel");
+    history.push("/login");
   };
 
   return {

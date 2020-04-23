@@ -4,7 +4,7 @@ import { Layout, Breadcrumb, Menu } from "antd";
 import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  HomeOutlined,
+  // HomeOutlined,
   GithubOutlined
 } from "@ant-design/icons";
 import style from "./HeaderSiderLayout.less";
@@ -50,7 +50,8 @@ export const HeaderSiderLayout: React.FC = observer(({ children }) => {
     <Layout className={style.layout}>
       <Sider trigger={null} collapsible collapsed={collapsed}>
         <Link to="/dashboard" className={style.homeLink}>
-          <HomeOutlined className={style.logo} />
+          {/* <HomeOutlined className={style.logo} /> */}
+          <div className={style.hmsLogo} />
         </Link>
         <Menu
           theme="dark"

@@ -44,13 +44,22 @@ module.exports = (env, argv) => {
               }
             },
             {
-              loader: "less-loader"
+              loader: "less-loader",
+              options: {
+                modifyVars: {
+                  "primary-color": "#495384"
+                },
+                javascriptEnabled: true
+              }
             }
           ]
         },
         {
           test: /\.(gif|png|jpg|svg)$/,
-          use: "file-loader"
+          loader: "file-loader",
+          options: {
+            outputPath: "images"
+          }
         },
         {
           test: /\.(eot|ttf|woff|woff2)$/,
