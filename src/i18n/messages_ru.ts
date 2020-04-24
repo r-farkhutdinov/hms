@@ -29,5 +29,9 @@ export const ru = {
   //guests
   guestId: "ID",
   guestName: "Полное имя",
-  guestCountry: "Страна"
+  guestCountry: "Страна",
+  guestAdd: "Добавить гостя",
+  deleteConfirm: "Удалить гостя?",
+  yes: "Да",
+  no: "Нет"
 };

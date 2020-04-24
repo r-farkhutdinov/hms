@@ -2,7 +2,7 @@ import * as React from "react";
 
 import { ColumnType } from "antd/lib/table";
 import { GuestReducedModelType } from "./store/guests.model";
-import { Avatar, Button } from "antd";
+import { Avatar, Button, Popconfirm } from "antd";
 import {
   UserOutlined,
   SettingOutlined,
@@ -45,7 +45,19 @@ export const usersListColumns = (f): ColumnType<GuestReducedModelType>[] => [
   {
     dataIndex: "actions",
     render: (_, r) => (
-      <Button type="link" icon={<DeleteOutlined style={{ color: "red" }} />} />
+      <Popconfirm
+        placement="left"
+        title={f({ id: "deleteConfirm" })}
+        // onConfirm={confirm}
+        // onCancel={cancel}
+        okText={f({ id: "yes" })}
+        cancelText={f({ id: "no" })}
+      >
+        <Button
+          type="link"
+          icon={<DeleteOutlined style={{ color: "red" }} />}
+        />
+      </Popconfirm>
     ),
     align: "center",
     width: 20

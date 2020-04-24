@@ -7,7 +7,8 @@ export const GuestsActions = (self: GuestsModelType) => {
   const loadGuests = flow(function*() {
     try {
       self.loading = true;
-      self.guestsList = yield mockGuests();
+      const guests = yield mockGuests();
+      self.guestsList = guests;
       self.loading = false;
     } catch (err) {
       message.error(err);

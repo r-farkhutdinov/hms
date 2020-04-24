@@ -29,5 +29,9 @@ export const en = {
   //guests
   guestId: "ID",
   guestName: "Full name",
-  guestCountry: "Country"
+  guestCountry: "Country",
+  guestAdd: "Add guest",
+  deleteConfirm: "Remove the guest from the list?",
+  yes: "Yes",
+  no: "No"
 };
