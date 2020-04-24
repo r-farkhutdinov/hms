@@ -24,5 +24,10 @@ export const en = {
   hotelSelected: "Currently selected",
 
   //bookings
-  config: "Configuration"
+  config: "Configuration",
+
+  //guests
+  guestId: "ID",
+  guestName: "Full name",
+  guestCountry: "Country"
 };

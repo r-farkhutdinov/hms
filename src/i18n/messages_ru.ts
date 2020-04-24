@@ -24,5 +24,10 @@ export const ru = {
   hotelSelected: "Выбран",
 
   //bookings
-  config: "Параметры"
+  config: "Параметры",
+
+  //guests
+  guestId: "ID",
+  guestName: "Полное имя",
+  guestCountry: "Страна"
 };
