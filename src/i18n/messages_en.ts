@@ -33,5 +33,7 @@ export const en = {
   guestAdd: "Add guest",
   deleteConfirm: "Remove the guest from the list?",
   yes: "Yes",
-  no: "No"
+  no: "No",
+  generalInfo: "General information",
+  documents: "Documents"
 };

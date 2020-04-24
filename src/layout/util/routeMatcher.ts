@@ -9,7 +9,9 @@ export const matchRoute = (route: string, isAuthorized: boolean): string => {
         routes.map(r => r.path)
       )
     ) {
-      const result = routes.find(r => r.path === route);
+      const result = routes.find(
+        r => r.path === route || matchPath(route, r.path)
+      );
 
       return (result && result.name) || "noMatch";
     } else {

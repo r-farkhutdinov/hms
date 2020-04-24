@@ -6,10 +6,13 @@ import { useIntl } from "react-intl";
 import { usersListColumns } from "./columns";
 import style from "./Guests.less";
 import { PlusOutlined } from "@ant-design/icons";
+import { GuestDetails } from "./Details";
 
 export const Guests: React.FC = observer(() => {
   const { guests } = useStore();
   const { formatMessage: f } = useIntl();
+  const [showDetails, setShowDetails] = React.useState<boolean>(false);
+  const [detailsUser, setDetailsUser] = React.useState<number>(undefined);
 
   const { loading, loadGuests } = guests;
 
@@ -24,13 +27,18 @@ export const Guests: React.FC = observer(() => {
           {f({ id: "guestAdd" })}
         </Button>
       </Space>
+      <GuestDetails
+        show={showDetails}
+        setShow={setShowDetails}
+        guestId={detailsUser}
+      />
       <Skeleton title={false} loading={loading} active>
         <Table
           rowKey={"id"}
           showHeader={false}
           loading={loading}
           dataSource={guests.guestsList}
-          columns={usersListColumns(f)}
+          columns={usersListColumns(f, setDetailsUser, setShowDetails)}
           pagination={false} // TODO: replace with real pagination
         />
       </Skeleton>

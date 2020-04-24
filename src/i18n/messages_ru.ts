@@ -33,5 +33,7 @@ export const ru = {
   guestAdd: "Добавить гостя",
   deleteConfirm: "Удалить гостя?",
   yes: "Да",
-  no: "Нет"
+  no: "Нет",
+  generalInfo: "Общая информация",
+  documents: "Документы"
 };

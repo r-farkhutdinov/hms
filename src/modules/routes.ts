@@ -1,3 +1,4 @@
+import { EditGuest } from "./Guests/Edit";
 import { Bookings } from "./Bookings";
 import { Guests } from "./Guests";
 import { NotFound } from "./NotFound";
@@ -45,6 +46,12 @@ export const routes = [
     name: "logout",
     path: "/logout",
     component: Logout,
+    layout: HeaderSiderLayout
+  },
+  {
+    name: "guests",
+    path: "/guests/:id/",
+    component: EditGuest,
     layout: HeaderSiderLayout
   },
   {

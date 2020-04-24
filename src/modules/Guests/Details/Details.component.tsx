@@ -12,51 +12,51 @@ import style from "./Details.less";
 export type HotelDetailsProps = {
   show: boolean;
   setShow: (show: boolean) => void;
-  hotelId: number;
+  guestId: number;
 };
 
-export const HotelDetails: React.FC<HotelDetailsProps> = observer(props => {
-  const { show, setShow, hotelId } = props;
+export const GuestDetails: React.FC<HotelDetailsProps> = observer(
+  ({ show, setShow, guestId }) => {
+    const { guests } = useStore();
 
-  const { hotels } = useStore();
+    const { loading, loadGuestDetails, guestDetails } = guests;
 
-  const { hotelDetailsLoading, hotelDetails, loadHotelDetails } = hotels;
+    React.useEffect(() => {
+      loadGuestDetails(guestId);
+    }, [guestId]);
 
-  React.useEffect(() => {
-    loadHotelDetails(hotelId);
-  }, [hotelId]);
+    return (
+      <Drawer
+        width={400}
+        title={`${
+          loading
+            ? "Loading"
+            : guestDetails &&
+              `${guestDetails.firstName} ${guestDetails.lastName}`
+        } - Details`}
+        placement="right"
+        closable={false}
+        onClose={() => setShow(false)}
+        visible={show}
+        className={style.drawer}
+      >
+        <Skeleton active loading={loading}>
+          <p>
+            <EnvironmentOutlined className={style.icon} />{" "}
+            <span className={style.title}>Location: </span>
+          </p>
 
-  return (
-    <Drawer
-      width={400}
-      title={`${
-        hotelDetailsLoading ? "Loading" : hotelDetails && hotelDetails.name
-      } - Details`}
-      placement="right"
-      closable={false}
-      onClose={() => setShow(false)}
-      visible={show}
-      className={style.drawer}
-    >
-      <Skeleton active loading={hotelDetailsLoading}>
-        <p>
-          <EnvironmentOutlined className={style.icon} />{" "}
-          <span className={style.title}>Location: </span>
-          {hotelDetails && hotelDetails.location}
-        </p>
+          <p>
+            <ShopOutlined className={style.icon} />{" "}
+            <span className={style.title}>Description: </span>
+          </p>
 
-        <p>
-          <ShopOutlined className={style.icon} />{" "}
-          <span className={style.title}>Description: </span>
-          {hotelDetails && hotelDetails.description}
-        </p>
-
-        <p>
-          <DatabaseOutlined className={style.icon} />{" "}
-          <span className={style.title}>System ID: </span>
-          {hotelDetails && hotelDetails.id}
-        </p>
-      </Skeleton>
-    </Drawer>
-  );
-});
+          <p>
+            <DatabaseOutlined className={style.icon} />{" "}
+            <span className={style.title}>System ID: </span>
+          </p>
+        </Skeleton>
+      </Drawer>
+    );
+  }
+);

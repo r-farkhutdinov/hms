@@ -10,7 +10,11 @@ import {
 } from "@ant-design/icons";
 import { Link } from "react-router-dom";
 
-export const usersListColumns = (f): ColumnType<GuestReducedModelType>[] => [
+export const usersListColumns = (
+  f,
+  setDetailsGuest: (guestId: number) => void,
+  setShow: (show: boolean) => void
+): ColumnType<GuestReducedModelType>[] => [
   {
     title: "",
     dataIndex: "avatar",
@@ -27,8 +31,17 @@ export const usersListColumns = (f): ColumnType<GuestReducedModelType>[] => [
   {
     title: f({ id: "guestName" }),
     dataIndex: "fullName",
-    render: (_, r) => `${r.firstName} ${r.lastName}`,
-    align: "center"
+    render: (_, r) => (
+      <Button
+        onClick={() => {
+          setDetailsGuest(r.id);
+          setShow(true);
+        }}
+        type="link"
+        icon={<UserOutlined />}
+      >{`${r.firstName} ${r.lastName}`}</Button>
+    ),
+    align: "left"
   },
   {
     title: f({ id: "guestCountry" }),

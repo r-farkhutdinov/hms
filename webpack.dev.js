@@ -7,9 +7,10 @@ module.exports = (env, argv) => {
   const outputDir = path.join(__dirname, "public");
   const srcDir = path.join(__dirname, "src");
   const restProxyTarget =
-    (env && env.restProxyTarget) || "https://xn--b1add.xn--80aaa3bi1bsw.xn--p1ai/";
+    (env && env.restProxyTarget) ||
+    "https://xn--b1add.xn--80aaa3bi1bsw.xn--p1ai/";
 
-  console.log(restProxyTarget)
+  console.log(restProxyTarget);
 
   return merge(common(env, argv), {
     mode: "development",

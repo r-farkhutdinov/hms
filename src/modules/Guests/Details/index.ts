@@ -1,1 +1,1 @@
-export { HotelDetails } from "./Details.component";
+export { GuestDetails } from "./Details.component";
