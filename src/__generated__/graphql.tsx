@@ -9,6 +9,7 @@ export type Scalars = {
   Boolean: boolean;
   Int: number;
   Float: number;
+  date: any;
 };
 
 /** expression to compare columns of type Int. All fields are combined with logical 'AND'. */
@@ -43,6 +44,717 @@ export type String_Comparison_Exp = {
   _similar?: Maybe<Scalars['String']>;
 };
 
+/** columns and relationships of "countries" */
+export type Countries = {
+   __typename?: 'countries';
+  id: Scalars['Int'];
+  name: Scalars['String'];
+};
+
+/** aggregated selection of "countries" */
+export type Countries_Aggregate = {
+   __typename?: 'countries_aggregate';
+  aggregate?: Maybe<Countries_Aggregate_Fields>;
+  nodes: Array<Countries>;
+};
+
+/** aggregate fields of "countries" */
+export type Countries_Aggregate_Fields = {
+   __typename?: 'countries_aggregate_fields';
+  avg?: Maybe<Countries_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Countries_Max_Fields>;
+  min?: Maybe<Countries_Min_Fields>;
+  stddev?: Maybe<Countries_Stddev_Fields>;
+  stddev_pop?: Maybe<Countries_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Countries_Stddev_Samp_Fields>;
+  sum?: Maybe<Countries_Sum_Fields>;
+  var_pop?: Maybe<Countries_Var_Pop_Fields>;
+  var_samp?: Maybe<Countries_Var_Samp_Fields>;
+  variance?: Maybe<Countries_Variance_Fields>;
+};
+
+
+/** aggregate fields of "countries" */
+export type Countries_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Countries_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "countries" */
+export type Countries_Aggregate_Order_By = {
+  avg?: Maybe<Countries_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Countries_Max_Order_By>;
+  min?: Maybe<Countries_Min_Order_By>;
+  stddev?: Maybe<Countries_Stddev_Order_By>;
+  stddev_pop?: Maybe<Countries_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Countries_Stddev_Samp_Order_By>;
+  sum?: Maybe<Countries_Sum_Order_By>;
+  var_pop?: Maybe<Countries_Var_Pop_Order_By>;
+  var_samp?: Maybe<Countries_Var_Samp_Order_By>;
+  variance?: Maybe<Countries_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "countries" */
+export type Countries_Arr_Rel_Insert_Input = {
+  data: Array<Countries_Insert_Input>;
+  on_conflict?: Maybe<Countries_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Countries_Avg_Fields = {
+   __typename?: 'countries_avg_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "countries" */
+export type Countries_Avg_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "countries". All fields are combined with a logical 'AND'. */
+export type Countries_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Countries_Bool_Exp>>>;
+  _not?: Maybe<Countries_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Countries_Bool_Exp>>>;
+  id?: Maybe<Int_Comparison_Exp>;
+  name?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "countries" */
+export enum Countries_Constraint {
+  /** unique or primary key constraint */
+  CountriesPkey = 'countries_pkey'
+}
+
+/** input type for incrementing integer columne in table "countries" */
+export type Countries_Inc_Input = {
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "countries" */
+export type Countries_Insert_Input = {
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Countries_Max_Fields = {
+   __typename?: 'countries_max_fields';
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "countries" */
+export type Countries_Max_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Countries_Min_Fields = {
+   __typename?: 'countries_min_fields';
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "countries" */
+export type Countries_Min_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "countries" */
+export type Countries_Mutation_Response = {
+   __typename?: 'countries_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Countries>;
+};
+
+/** input type for inserting object relation for remote table "countries" */
+export type Countries_Obj_Rel_Insert_Input = {
+  data: Countries_Insert_Input;
+  on_conflict?: Maybe<Countries_On_Conflict>;
+};
+
+/** on conflict condition type for table "countries" */
+export type Countries_On_Conflict = {
+  constraint: Countries_Constraint;
+  update_columns: Array<Countries_Update_Column>;
+  where?: Maybe<Countries_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "countries" */
+export type Countries_Order_By = {
+  id?: Maybe<Order_By>;
+  name?: Maybe<Order_By>;
+};
+
+/** select columns of table "countries" */
+export enum Countries_Select_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** input type for updating data in table "countries" */
+export type Countries_Set_Input = {
+  id?: Maybe<Scalars['Int']>;
+  name?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Countries_Stddev_Fields = {
+   __typename?: 'countries_stddev_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "countries" */
+export type Countries_Stddev_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Countries_Stddev_Pop_Fields = {
+   __typename?: 'countries_stddev_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "countries" */
+export type Countries_Stddev_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Countries_Stddev_Samp_Fields = {
+   __typename?: 'countries_stddev_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "countries" */
+export type Countries_Stddev_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Countries_Sum_Fields = {
+   __typename?: 'countries_sum_fields';
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "countries" */
+export type Countries_Sum_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** update columns of table "countries" */
+export enum Countries_Update_Column {
+  /** column name */
+  Id = 'id',
+  /** column name */
+  Name = 'name'
+}
+
+/** aggregate var_pop on columns */
+export type Countries_Var_Pop_Fields = {
+   __typename?: 'countries_var_pop_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "countries" */
+export type Countries_Var_Pop_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Countries_Var_Samp_Fields = {
+   __typename?: 'countries_var_samp_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "countries" */
+export type Countries_Var_Samp_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Countries_Variance_Fields = {
+   __typename?: 'countries_variance_fields';
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "countries" */
+export type Countries_Variance_Order_By = {
+  id?: Maybe<Order_By>;
+};
+
+
+/** expression to compare columns of type date. All fields are combined with logical 'AND'. */
+export type Date_Comparison_Exp = {
+  _eq?: Maybe<Scalars['date']>;
+  _gt?: Maybe<Scalars['date']>;
+  _gte?: Maybe<Scalars['date']>;
+  _in?: Maybe<Array<Scalars['date']>>;
+  _is_null?: Maybe<Scalars['Boolean']>;
+  _lt?: Maybe<Scalars['date']>;
+  _lte?: Maybe<Scalars['date']>;
+  _neq?: Maybe<Scalars['date']>;
+  _nin?: Maybe<Array<Scalars['date']>>;
+};
+
+/** columns and relationships of "document_types_enum" */
+export type Document_Types_Enum = {
+   __typename?: 'document_types_enum';
+  key: Scalars['String'];
+  value: Scalars['String'];
+};
+
+/** aggregated selection of "document_types_enum" */
+export type Document_Types_Enum_Aggregate = {
+   __typename?: 'document_types_enum_aggregate';
+  aggregate?: Maybe<Document_Types_Enum_Aggregate_Fields>;
+  nodes: Array<Document_Types_Enum>;
+};
+
+/** aggregate fields of "document_types_enum" */
+export type Document_Types_Enum_Aggregate_Fields = {
+   __typename?: 'document_types_enum_aggregate_fields';
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Document_Types_Enum_Max_Fields>;
+  min?: Maybe<Document_Types_Enum_Min_Fields>;
+};
+
+
+/** aggregate fields of "document_types_enum" */
+export type Document_Types_Enum_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Document_Types_Enum_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "document_types_enum" */
+export type Document_Types_Enum_Aggregate_Order_By = {
+  count?: Maybe<Order_By>;
+  max?: Maybe<Document_Types_Enum_Max_Order_By>;
+  min?: Maybe<Document_Types_Enum_Min_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "document_types_enum" */
+export type Document_Types_Enum_Arr_Rel_Insert_Input = {
+  data: Array<Document_Types_Enum_Insert_Input>;
+  on_conflict?: Maybe<Document_Types_Enum_On_Conflict>;
+};
+
+/** Boolean expression to filter rows from the table "document_types_enum". All fields are combined with a logical 'AND'. */
+export type Document_Types_Enum_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Document_Types_Enum_Bool_Exp>>>;
+  _not?: Maybe<Document_Types_Enum_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Document_Types_Enum_Bool_Exp>>>;
+  key?: Maybe<String_Comparison_Exp>;
+  value?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "document_types_enum" */
+export enum Document_Types_Enum_Constraint {
+  /** unique or primary key constraint */
+  DocumentTypesEnumPkey = 'document_types_enum_pkey',
+  /** unique or primary key constraint */
+  DocumentTypesEnumValueKey = 'document_types_enum_value_key'
+}
+
+/** input type for inserting data into table "document_types_enum" */
+export type Document_Types_Enum_Insert_Input = {
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Document_Types_Enum_Max_Fields = {
+   __typename?: 'document_types_enum_max_fields';
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "document_types_enum" */
+export type Document_Types_Enum_Max_Order_By = {
+  key?: Maybe<Order_By>;
+  value?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Document_Types_Enum_Min_Fields = {
+   __typename?: 'document_types_enum_min_fields';
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "document_types_enum" */
+export type Document_Types_Enum_Min_Order_By = {
+  key?: Maybe<Order_By>;
+  value?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "document_types_enum" */
+export type Document_Types_Enum_Mutation_Response = {
+   __typename?: 'document_types_enum_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Document_Types_Enum>;
+};
+
+/** input type for inserting object relation for remote table "document_types_enum" */
+export type Document_Types_Enum_Obj_Rel_Insert_Input = {
+  data: Document_Types_Enum_Insert_Input;
+  on_conflict?: Maybe<Document_Types_Enum_On_Conflict>;
+};
+
+/** on conflict condition type for table "document_types_enum" */
+export type Document_Types_Enum_On_Conflict = {
+  constraint: Document_Types_Enum_Constraint;
+  update_columns: Array<Document_Types_Enum_Update_Column>;
+  where?: Maybe<Document_Types_Enum_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "document_types_enum" */
+export type Document_Types_Enum_Order_By = {
+  key?: Maybe<Order_By>;
+  value?: Maybe<Order_By>;
+};
+
+/** select columns of table "document_types_enum" */
+export enum Document_Types_Enum_Select_Column {
+  /** column name */
+  Key = 'key',
+  /** column name */
+  Value = 'value'
+}
+
+/** input type for updating data in table "document_types_enum" */
+export type Document_Types_Enum_Set_Input = {
+  key?: Maybe<Scalars['String']>;
+  value?: Maybe<Scalars['String']>;
+};
+
+/** update columns of table "document_types_enum" */
+export enum Document_Types_Enum_Update_Column {
+  /** column name */
+  Key = 'key',
+  /** column name */
+  Value = 'value'
+}
+
+/** columns and relationships of "documents" */
+export type Documents = {
+   __typename?: 'documents';
+  birthday: Scalars['date'];
+  country_id: Scalars['Int'];
+  guest_id: Scalars['Int'];
+  id: Scalars['Int'];
+};
+
+/** aggregated selection of "documents" */
+export type Documents_Aggregate = {
+   __typename?: 'documents_aggregate';
+  aggregate?: Maybe<Documents_Aggregate_Fields>;
+  nodes: Array<Documents>;
+};
+
+/** aggregate fields of "documents" */
+export type Documents_Aggregate_Fields = {
+   __typename?: 'documents_aggregate_fields';
+  avg?: Maybe<Documents_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Documents_Max_Fields>;
+  min?: Maybe<Documents_Min_Fields>;
+  stddev?: Maybe<Documents_Stddev_Fields>;
+  stddev_pop?: Maybe<Documents_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Documents_Stddev_Samp_Fields>;
+  sum?: Maybe<Documents_Sum_Fields>;
+  var_pop?: Maybe<Documents_Var_Pop_Fields>;
+  var_samp?: Maybe<Documents_Var_Samp_Fields>;
+  variance?: Maybe<Documents_Variance_Fields>;
+};
+
+
+/** aggregate fields of "documents" */
+export type Documents_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Documents_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "documents" */
+export type Documents_Aggregate_Order_By = {
+  avg?: Maybe<Documents_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Documents_Max_Order_By>;
+  min?: Maybe<Documents_Min_Order_By>;
+  stddev?: Maybe<Documents_Stddev_Order_By>;
+  stddev_pop?: Maybe<Documents_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Documents_Stddev_Samp_Order_By>;
+  sum?: Maybe<Documents_Sum_Order_By>;
+  var_pop?: Maybe<Documents_Var_Pop_Order_By>;
+  var_samp?: Maybe<Documents_Var_Samp_Order_By>;
+  variance?: Maybe<Documents_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "documents" */
+export type Documents_Arr_Rel_Insert_Input = {
+  data: Array<Documents_Insert_Input>;
+  on_conflict?: Maybe<Documents_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Documents_Avg_Fields = {
+   __typename?: 'documents_avg_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "documents" */
+export type Documents_Avg_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "documents". All fields are combined with a logical 'AND'. */
+export type Documents_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Documents_Bool_Exp>>>;
+  _not?: Maybe<Documents_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Documents_Bool_Exp>>>;
+  birthday?: Maybe<Date_Comparison_Exp>;
+  country_id?: Maybe<Int_Comparison_Exp>;
+  guest_id?: Maybe<Int_Comparison_Exp>;
+  id?: Maybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "documents" */
+export enum Documents_Constraint {
+  /** unique or primary key constraint */
+  DocumentsPkey = 'documents_pkey'
+}
+
+/** input type for incrementing integer columne in table "documents" */
+export type Documents_Inc_Input = {
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "documents" */
+export type Documents_Insert_Input = {
+  birthday?: Maybe<Scalars['date']>;
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Documents_Max_Fields = {
+   __typename?: 'documents_max_fields';
+  birthday?: Maybe<Scalars['date']>;
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "documents" */
+export type Documents_Max_Order_By = {
+  birthday?: Maybe<Order_By>;
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Documents_Min_Fields = {
+   __typename?: 'documents_min_fields';
+  birthday?: Maybe<Scalars['date']>;
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "documents" */
+export type Documents_Min_Order_By = {
+  birthday?: Maybe<Order_By>;
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "documents" */
+export type Documents_Mutation_Response = {
+   __typename?: 'documents_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Documents>;
+};
+
+/** input type for inserting object relation for remote table "documents" */
+export type Documents_Obj_Rel_Insert_Input = {
+  data: Documents_Insert_Input;
+  on_conflict?: Maybe<Documents_On_Conflict>;
+};
+
+/** on conflict condition type for table "documents" */
+export type Documents_On_Conflict = {
+  constraint: Documents_Constraint;
+  update_columns: Array<Documents_Update_Column>;
+  where?: Maybe<Documents_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "documents" */
+export type Documents_Order_By = {
+  birthday?: Maybe<Order_By>;
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** select columns of table "documents" */
+export enum Documents_Select_Column {
+  /** column name */
+  Birthday = 'birthday',
+  /** column name */
+  CountryId = 'country_id',
+  /** column name */
+  GuestId = 'guest_id',
+  /** column name */
+  Id = 'id'
+}
+
+/** input type for updating data in table "documents" */
+export type Documents_Set_Input = {
+  birthday?: Maybe<Scalars['date']>;
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Documents_Stddev_Fields = {
+   __typename?: 'documents_stddev_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "documents" */
+export type Documents_Stddev_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Documents_Stddev_Pop_Fields = {
+   __typename?: 'documents_stddev_pop_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "documents" */
+export type Documents_Stddev_Pop_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Documents_Stddev_Samp_Fields = {
+   __typename?: 'documents_stddev_samp_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "documents" */
+export type Documents_Stddev_Samp_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Documents_Sum_Fields = {
+   __typename?: 'documents_sum_fields';
+  country_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "documents" */
+export type Documents_Sum_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** update columns of table "documents" */
+export enum Documents_Update_Column {
+  /** column name */
+  Birthday = 'birthday',
+  /** column name */
+  CountryId = 'country_id',
+  /** column name */
+  GuestId = 'guest_id',
+  /** column name */
+  Id = 'id'
+}
+
+/** aggregate var_pop on columns */
+export type Documents_Var_Pop_Fields = {
+   __typename?: 'documents_var_pop_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "documents" */
+export type Documents_Var_Pop_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Documents_Var_Samp_Fields = {
+   __typename?: 'documents_var_samp_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "documents" */
+export type Documents_Var_Samp_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Documents_Variance_Fields = {
+   __typename?: 'documents_variance_fields';
+  country_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "documents" */
+export type Documents_Variance_Order_By = {
+  country_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  id?: Maybe<Order_By>;
+};
+
 /**
  * Table of guests
  * 
@@ -51,12 +763,16 @@ export type String_Comparison_Exp = {
  */
 export type Guests = {
    __typename?: 'guests';
+  /** An object relationship */
+  country?: Maybe<Countries>;
   country_id: Scalars['Int'];
+  /** An object relationship */
+  document?: Maybe<Documents>;
   document_id: Scalars['Int'];
   first_name: Scalars['String'];
   id: Scalars['Int'];
   last_name: Scalars['String'];
-  visa_id: Scalars['Int'];
+  visa_id?: Maybe<Scalars['Int']>;
 };
 
 /** aggregated selection of "guests" */
@@ -132,7 +848,9 @@ export type Guests_Bool_Exp = {
   _and?: Maybe<Array<Maybe<Guests_Bool_Exp>>>;
   _not?: Maybe<Guests_Bool_Exp>;
   _or?: Maybe<Array<Maybe<Guests_Bool_Exp>>>;
+  country?: Maybe<Countries_Bool_Exp>;
   country_id?: Maybe<Int_Comparison_Exp>;
+  document?: Maybe<Documents_Bool_Exp>;
   document_id?: Maybe<Int_Comparison_Exp>;
   first_name?: Maybe<String_Comparison_Exp>;
   id?: Maybe<Int_Comparison_Exp>;
@@ -160,7 +878,9 @@ export type Guests_Inc_Input = {
 
 /** input type for inserting data into table "guests" */
 export type Guests_Insert_Input = {
+  country?: Maybe<Countries_Obj_Rel_Insert_Input>;
   country_id?: Maybe<Scalars['Int']>;
+  document?: Maybe<Documents_Obj_Rel_Insert_Input>;
   document_id?: Maybe<Scalars['Int']>;
   first_name?: Maybe<Scalars['String']>;
   id?: Maybe<Scalars['Int']>;
@@ -234,7 +954,9 @@ export type Guests_On_Conflict = {
 
 /** ordering options when selecting data from "guests" */
 export type Guests_Order_By = {
+  country?: Maybe<Countries_Order_By>;
   country_id?: Maybe<Order_By>;
+  document?: Maybe<Documents_Order_By>;
   document_id?: Maybe<Order_By>;
   first_name?: Maybe<Order_By>;
   id?: Maybe<Order_By>;
@@ -406,18 +1128,54 @@ export type Guests_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
    __typename?: 'mutation_root';
+  /** delete data from the table: "countries" */
+  delete_countries?: Maybe<Countries_Mutation_Response>;
+  /** delete data from the table: "document_types_enum" */
+  delete_document_types_enum?: Maybe<Document_Types_Enum_Mutation_Response>;
+  /** delete data from the table: "documents" */
+  delete_documents?: Maybe<Documents_Mutation_Response>;
   /** delete data from the table: "guests" */
   delete_guests?: Maybe<Guests_Mutation_Response>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "countries" */
+  insert_countries?: Maybe<Countries_Mutation_Response>;
+  /** insert data into the table: "document_types_enum" */
+  insert_document_types_enum?: Maybe<Document_Types_Enum_Mutation_Response>;
+  /** insert data into the table: "documents" */
+  insert_documents?: Maybe<Documents_Mutation_Response>;
   /** insert data into the table: "guests" */
   insert_guests?: Maybe<Guests_Mutation_Response>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
+  /** update data of the table: "countries" */
+  update_countries?: Maybe<Countries_Mutation_Response>;
+  /** update data of the table: "document_types_enum" */
+  update_document_types_enum?: Maybe<Document_Types_Enum_Mutation_Response>;
+  /** update data of the table: "documents" */
+  update_documents?: Maybe<Documents_Mutation_Response>;
   /** update data of the table: "guests" */
   update_guests?: Maybe<Guests_Mutation_Response>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_CountriesArgs = {
+  where: Countries_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_Document_Types_EnumArgs = {
+  where: Document_Types_Enum_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_DocumentsArgs = {
+  where: Documents_Bool_Exp;
 };
 
 
@@ -434,6 +1192,27 @@ export type Mutation_RootDelete_UsersArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_CountriesArgs = {
+  objects: Array<Countries_Insert_Input>;
+  on_conflict?: Maybe<Countries_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_Document_Types_EnumArgs = {
+  objects: Array<Document_Types_Enum_Insert_Input>;
+  on_conflict?: Maybe<Document_Types_Enum_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_DocumentsArgs = {
+  objects: Array<Documents_Insert_Input>;
+  on_conflict?: Maybe<Documents_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_GuestsArgs = {
   objects: Array<Guests_Insert_Input>;
   on_conflict?: Maybe<Guests_On_Conflict>;
@@ -444,6 +1223,29 @@ export type Mutation_RootInsert_GuestsArgs = {
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: Maybe<Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_CountriesArgs = {
+  _inc?: Maybe<Countries_Inc_Input>;
+  _set?: Maybe<Countries_Set_Input>;
+  where: Countries_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_Document_Types_EnumArgs = {
+  _set?: Maybe<Document_Types_Enum_Set_Input>;
+  where: Document_Types_Enum_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_DocumentsArgs = {
+  _inc?: Maybe<Documents_Inc_Input>;
+  _set?: Maybe<Documents_Set_Input>;
+  where: Documents_Bool_Exp;
 };
 
 
@@ -481,6 +1283,24 @@ export enum Order_By {
 /** query root */
 export type Query_Root = {
    __typename?: 'query_root';
+  /** fetch data from the table: "countries" */
+  countries: Array<Countries>;
+  /** fetch aggregated fields from the table: "countries" */
+  countries_aggregate: Countries_Aggregate;
+  /** fetch data from the table: "countries" using primary key columns */
+  countries_by_pk?: Maybe<Countries>;
+  /** fetch data from the table: "document_types_enum" */
+  document_types_enum: Array<Document_Types_Enum>;
+  /** fetch aggregated fields from the table: "document_types_enum" */
+  document_types_enum_aggregate: Document_Types_Enum_Aggregate;
+  /** fetch data from the table: "document_types_enum" using primary key columns */
+  document_types_enum_by_pk?: Maybe<Document_Types_Enum>;
+  /** fetch data from the table: "documents" */
+  documents: Array<Documents>;
+  /** fetch aggregated fields from the table: "documents" */
+  documents_aggregate: Documents_Aggregate;
+  /** fetch data from the table: "documents" using primary key columns */
+  documents_by_pk?: Maybe<Documents>;
   /** fetch data from the table: "guests" */
   guests: Array<Guests>;
   /** fetch aggregated fields from the table: "guests" */
@@ -493,6 +1313,84 @@ export type Query_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+/** query root */
+export type Query_RootCountriesArgs = {
+  distinct_on?: Maybe<Array<Countries_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Countries_Order_By>>;
+  where?: Maybe<Countries_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootCountries_AggregateArgs = {
+  distinct_on?: Maybe<Array<Countries_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Countries_Order_By>>;
+  where?: Maybe<Countries_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootCountries_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** query root */
+export type Query_RootDocument_Types_EnumArgs = {
+  distinct_on?: Maybe<Array<Document_Types_Enum_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Document_Types_Enum_Order_By>>;
+  where?: Maybe<Document_Types_Enum_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootDocument_Types_Enum_AggregateArgs = {
+  distinct_on?: Maybe<Array<Document_Types_Enum_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Document_Types_Enum_Order_By>>;
+  where?: Maybe<Document_Types_Enum_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootDocument_Types_Enum_By_PkArgs = {
+  key: Scalars['String'];
+};
+
+
+/** query root */
+export type Query_RootDocumentsArgs = {
+  distinct_on?: Maybe<Array<Documents_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Documents_Order_By>>;
+  where?: Maybe<Documents_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootDocuments_AggregateArgs = {
+  distinct_on?: Maybe<Array<Documents_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Documents_Order_By>>;
+  where?: Maybe<Documents_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootDocuments_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -550,6 +1448,24 @@ export type Query_RootUsers_By_PkArgs = {
 /** subscription root */
 export type Subscription_Root = {
    __typename?: 'subscription_root';
+  /** fetch data from the table: "countries" */
+  countries: Array<Countries>;
+  /** fetch aggregated fields from the table: "countries" */
+  countries_aggregate: Countries_Aggregate;
+  /** fetch data from the table: "countries" using primary key columns */
+  countries_by_pk?: Maybe<Countries>;
+  /** fetch data from the table: "document_types_enum" */
+  document_types_enum: Array<Document_Types_Enum>;
+  /** fetch aggregated fields from the table: "document_types_enum" */
+  document_types_enum_aggregate: Document_Types_Enum_Aggregate;
+  /** fetch data from the table: "document_types_enum" using primary key columns */
+  document_types_enum_by_pk?: Maybe<Document_Types_Enum>;
+  /** fetch data from the table: "documents" */
+  documents: Array<Documents>;
+  /** fetch aggregated fields from the table: "documents" */
+  documents_aggregate: Documents_Aggregate;
+  /** fetch data from the table: "documents" using primary key columns */
+  documents_by_pk?: Maybe<Documents>;
   /** fetch data from the table: "guests" */
   guests: Array<Guests>;
   /** fetch aggregated fields from the table: "guests" */
@@ -562,6 +1478,84 @@ export type Subscription_Root = {
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+/** subscription root */
+export type Subscription_RootCountriesArgs = {
+  distinct_on?: Maybe<Array<Countries_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Countries_Order_By>>;
+  where?: Maybe<Countries_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootCountries_AggregateArgs = {
+  distinct_on?: Maybe<Array<Countries_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Countries_Order_By>>;
+  where?: Maybe<Countries_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootCountries_By_PkArgs = {
+  id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type Subscription_RootDocument_Types_EnumArgs = {
+  distinct_on?: Maybe<Array<Document_Types_Enum_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Document_Types_Enum_Order_By>>;
+  where?: Maybe<Document_Types_Enum_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootDocument_Types_Enum_AggregateArgs = {
+  distinct_on?: Maybe<Array<Document_Types_Enum_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Document_Types_Enum_Order_By>>;
+  where?: Maybe<Document_Types_Enum_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootDocument_Types_Enum_By_PkArgs = {
+  key: Scalars['String'];
+};
+
+
+/** subscription root */
+export type Subscription_RootDocumentsArgs = {
+  distinct_on?: Maybe<Array<Documents_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Documents_Order_By>>;
+  where?: Maybe<Documents_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootDocuments_AggregateArgs = {
+  distinct_on?: Maybe<Array<Documents_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Documents_Order_By>>;
+  where?: Maybe<Documents_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootDocuments_By_PkArgs = {
+  id: Scalars['Int'];
 };
 
 
@@ -882,7 +1876,7 @@ export type Users_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
-export type GuestsListFieldsFragment = { __typename?: 'guests', country_id: number, document_id: number, first_name: string, id: number, last_name: string, visa_id: number };
+export type GuestsListFieldsFragment = { __typename?: 'guests', id: number, firstName: string, lastName: string, country?: Maybe<{ __typename?: 'countries', id: number, name: string }> };
 
 export type FetchGuestsQueryVariables = {};
 
@@ -892,14 +1886,25 @@ export type FetchGuestsQuery = { __typename?: 'query_root', guests: Array<(
     & GuestsListFieldsFragment
   )> };
 
+export type InsertGuestMutationVariables = {
+  objects: Array<Guests_Insert_Input>;
+};
+
+
+export type InsertGuestMutation = { __typename?: 'mutation_root', insert_guests?: Maybe<{ __typename?: 'guests_mutation_response', returning: Array<(
+      { __typename?: 'guests' }
+      & GuestsListFieldsFragment
+    )> }> };
+
 export const GuestsListFieldsFragmentDoc = gql`
     fragment GuestsListFields on guests {
-  country_id
-  document_id
-  first_name
   id
-  last_name
-  visa_id
+  firstName: first_name
+  lastName: last_name
+  country {
+    id
+    name
+  }
 }
     `;
 export const FetchGuestsDocument = gql`
@@ -934,3 +1939,37 @@ export function useFetchGuestsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type FetchGuestsQueryHookResult = ReturnType<typeof useFetchGuestsQuery>;
 export type FetchGuestsLazyQueryHookResult = ReturnType<typeof useFetchGuestsLazyQuery>;
 export type FetchGuestsQueryResult = ApolloReactCommon.QueryResult<FetchGuestsQuery, FetchGuestsQueryVariables>;
+export const InsertGuestDocument = gql`
+    mutation insertGuest($objects: [guests_insert_input!]!) {
+  insert_guests(objects: $objects) {
+    returning {
+      ...GuestsListFields
+    }
+  }
+}
+    ${GuestsListFieldsFragmentDoc}`;
+export type InsertGuestMutationFn = ApolloReactCommon.MutationFunction<InsertGuestMutation, InsertGuestMutationVariables>;
+
+/**
+ * __useInsertGuestMutation__
+ *
+ * To run a mutation, you first call `useInsertGuestMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useInsertGuestMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [insertGuestMutation, { data, loading, error }] = useInsertGuestMutation({
+ *   variables: {
+ *      objects: // value for 'objects'
+ *   },
+ * });
+ */
+export function useInsertGuestMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<InsertGuestMutation, InsertGuestMutationVariables>) {
+        return ApolloReactHooks.useMutation<InsertGuestMutation, InsertGuestMutationVariables>(InsertGuestDocument, baseOptions);
+      }
+export type InsertGuestMutationHookResult = ReturnType<typeof useInsertGuestMutation>;
+export type InsertGuestMutationResult = ApolloReactCommon.MutationResult<InsertGuestMutation>;
+export type InsertGuestMutationOptions = ApolloReactCommon.BaseMutationOptions<InsertGuestMutation, InsertGuestMutationVariables>;

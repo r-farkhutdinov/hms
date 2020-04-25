@@ -2,12 +2,13 @@ import { gql } from "@apollo/client";
 
 export const guestsListFragment = gql`
   fragment GuestsListFields on guests {
-    country_id
-    document_id
-    first_name
     id
-    last_name
-    visa_id
+    firstName: first_name
+    lastName: last_name
+    country {
+      id
+      name
+    }
   }
 `;
 

@@ -1,6 +1,8 @@
 export const en = {
   author: "Ruslan Farkhutdinov",
   change: "Change",
+  okText: "Confirm",
+  cancelText: "Cancel",
 
   //routes
   dashboard: "Dashboard",
@@ -35,5 +37,8 @@ export const en = {
   yes: "Yes",
   no: "No",
   generalInfo: "General information",
-  documents: "Documents"
+  documents: "Documents",
+  firstName: "First name",
+  lastName: "Last name",
+  addUser: "Add guest"
 };

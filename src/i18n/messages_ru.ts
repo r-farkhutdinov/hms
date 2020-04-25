@@ -1,6 +1,8 @@
 export const ru = {
   author: "Руслан Фархутдинов",
   change: "Изменить",
+  okText: "Применить",
+  cancelText: "Отмена",
 
   //routes
   dashboard: "Главная",
@@ -35,5 +37,8 @@ export const ru = {
   yes: "Да",
   no: "Нет",
   generalInfo: "Общая информация",
-  documents: "Документы"
+  documents: "Документы",
+  firstName: "Имя",
+  lastName: "Фамилия",
+  addUser: "Добавить гостя"
 };

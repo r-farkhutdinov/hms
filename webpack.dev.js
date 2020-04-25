@@ -25,6 +25,10 @@ module.exports = (env, argv) => {
         {
           context: ["/api/"],
           target: restProxyTarget
+        },
+        {
+          context: ["/v1/graphql"],
+          target: "http://localhost:9555"
         }
       ]
     },
