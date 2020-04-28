@@ -2,13 +2,85 @@
   display: grid;
   overflow: scroll;
 
-  min-height: 500px;
-  height: 50vh;
   max-height: 1000px;
+
+  grid-template-rows: 50px 1fr;
+  grid-auto-columns: 50px 1fr;
+
+  grid-template-areas:
+    'details dates'
+    'rooms bookings';
+
+  .roomsGridContainer,
+  .datesGridContainer,
+  .bookingsGridContainer,
+  .corner {
+    display: grid;
+    z-index: 3;
+    position: sticky;
+  }
+
+  .corner {
+    grid-area: details;
+    left: 0;
+    top: 0;
+    z-index: 4;
+    background: #f7f7f7;
+    border: 1px solid gray;
+  }
+
+  .roomsGridContainer {
+    grid-area: rooms;
+    left: 0;
+    text-align: center;
+    border-top: none;
+    background: #f7f7f7;
+
+    .room {
+      border: 1px solid gray;
+      border-top: none;
+    }
+  }
+
+  .datesGridContainer {
+    grid-area: dates;
+    top: 0;
+    border-left: none;
+    background: #f7f7f7;
+  }
+
+  .bookingsGridContainer {
+    grid-area: bookings;
+    overflow: hidden;
+    z-index: 2;
+
+    .booking {
+      cursor: pointer;
+      transition: 0.4s;
+      background: coral;
+      border-radius: 10px;
+      margin: 5px 20px;
+      text-align: center;
+      padding: 10px 20px;
+      z-index: 2;
+
+      &:hover {
+        margin: 4px 20px;
+      }
+    }
+
+    .transparentCell {
+      border: 1px solid lightgray;
+      border-top: none;
+      border-left: none;
+    }
+  }
 }
 
 .dateContainer {
   text-align: center;
+  border: 1px solid gray;
+  border-left: none;
 
   .weekday {
     display: block;

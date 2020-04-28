@@ -13,6 +13,7 @@ export type DateRangeType = {
 
 export const Bookings: React.FC = observer(() => {
   const [dates, setDates] = React.useState<DateRangeType>({ startDate: moment(), endDate: moment().add(20, 'd') });
+  const [zoom, setZoom] = React.useState<number>(5);
 
   const { bookings: bookingsStore } = useStore();
   const { load, bookings } = bookingsStore;
@@ -25,8 +26,8 @@ export const Bookings: React.FC = observer(() => {
 
   return (
     <>
-      <FilterPanel dates={dates} setDates={setDates} />
-      <BookingsTable dates={dates} />
+      <FilterPanel zoom={zoom} setZoom={setZoom} dates={dates} setDates={setDates} />
+      <BookingsTable zoom={zoom} dates={dates} />
     </>
   );
 });

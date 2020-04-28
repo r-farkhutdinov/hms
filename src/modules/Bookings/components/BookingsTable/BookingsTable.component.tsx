@@ -4,42 +4,54 @@ import { getDatesInRange } from '../../../../common/dates_utils/rangeDates';
 import { DateRangeType } from '../../Bookings.component';
 import style from './BookingsTable.less';
 import weekday from 'dayjs/plugin/weekday';
+import { getBookingStyle } from './util';
 
 dayjs.extend(weekday);
 
 type Props = {
   dates: DateRangeType;
+  zoom: number;
 };
 
-export const BookingsTable: React.FC<Props> = ({ dates }) => {
+const getTransparentGrid = (rows: number, columns: number) => {
+  let result: Array<JSX.Element> = [];
+
+  for (let i = 1; i < rows + 1; i++) {
+    for (let j = 1; j < columns + 1; j++) {
+      result.push(
+        <div
+          key={i}
+          className={style.transparentCell}
+          style={{ gridRowStart: i, gridRowEnd: i, gridColumnStart: j, gridColumnEnd: j }}
+        />,
+      );
+    }
+  }
+
+  return result;
+};
+
+export const BookingsTable: React.FC<Props> = ({ dates, zoom }) => {
   const distinctDays = getDatesInRange(dates.startDate.toDate(), dates.endDate.toDate());
 
-  const roomsAmount = 10;
+  const roomsAmount = 3;
 
   const cellSize = 50;
 
-  const containerStyle = {
-    gridTemplateColumns: `150px repeat(${distinctDays.length}, minmax(${cellSize}px, 1fr)`,
-    gridTemplateRows: `50px repeat(${roomsAmount},1fr)`,
+  const datesContainerStyle = {
+    gridTemplateColumns: `repeat(${distinctDays.length}, minmax(${cellSize + 5 * zoom}px, 1fr))`,
+  };
+
+  const roomsContainerStyle = {
+    gridTemplateRows: `repeat(${roomsAmount}, 50px)`,
+  };
+
+  const bookingsContainerStyle = {
+    gridTemplateRows: `repeat(${roomsAmount}, 50px)`,
+    gridTemplateColumns: `repeat(${distinctDays.length}, minmax(${cellSize + 5 * zoom}px, 1fr)`,
   };
 
   const rooms = [1, 4, 5];
-
-  const getBookingStyle = (start: string, end: string, room: number) => {
-    const startDate = new Date(start),
-      endDate = new Date(end);
-
-    const startDateInArray = distinctDays.find(d => dayjs(d).isSame(startDate, 'date'));
-    const endDateInArray = distinctDays.find(d => dayjs(d).isSame(endDate, 'date'));
-
-    const roomPos = rooms.indexOf(room) + 2;
-    return {
-      gridRowStart: roomPos,
-      gridRowEnd: roomPos,
-      gridColumnStart: startDateInArray ? distinctDays.indexOf(startDateInArray) + 2 : -1,
-      gridColumnEnd: endDateInArray ? distinctDays.indexOf(endDateInArray) + 2 : -1,
-    };
-  };
 
   const testBooking = {
     room: 4,
@@ -48,25 +60,36 @@ export const BookingsTable: React.FC<Props> = ({ dates }) => {
     name: 'Test booking',
   };
 
-  console.log(getBookingStyle(testBooking.start, testBooking.end, testBooking.room));
+  console.log(zoom);
 
   return (
     <>
-      <div className={style.container} style={containerStyle}>
-        <p>№ / date</p>
-        {distinctDays.map((d, index) => (
-          <div key={index} className={style.dateContainer}>
-            <span className={style.weekday}>{dayjs(d).format('dd')}</span>
-            <span className={style.date}>{dayjs(d).get('date')}</span>
+      <div className={style.container}>
+        <div className={style.corner}>№ \ date</div>
+        <div className={style.datesGridContainer} style={datesContainerStyle}>
+          {distinctDays.map((d, index) => (
+            <div key={index} className={style.dateContainer}>
+              <span className={style.weekday}>{dayjs(d).format('dd')}</span>
+              <span className={style.date}>{dayjs(d).get('date')}</span>
+            </div>
+          ))}
+        </div>
+        <div className={style.roomsGridContainer} style={roomsContainerStyle}>
+          {rooms.map((r, index) => (
+            <div key={index} style={{ gridRowStart: index + 1, gridRowEnd: index + 1 }} className={style.room}>
+              {r}
+            </div>
+          ))}
+        </div>
+        <div className={style.bookingsGridContainer} style={bookingsContainerStyle}>
+          <div
+            className={style.booking}
+            style={getBookingStyle(testBooking.start, testBooking.end, testBooking.room, rooms, distinctDays)}
+          >
+            {testBooking.name}
           </div>
-        ))}
-        {rooms.map((r, index) => (
-          <div key={index} style={{ gridRowStart: index + 2, gridRowEnd: index + 2 }}>
-            {r}
-          </div>
-        ))}
-        <div className={style.booking} style={getBookingStyle(testBooking.start, testBooking.end, testBooking.room)}>
-          {testBooking.name}
+
+          {getTransparentGrid(rooms.length, distinctDays.length)}
         </div>
       </div>
     </>

@@ -1125,6 +1125,302 @@ export type Guests_Variance_Order_By = {
   visa_id?: Maybe<Order_By>;
 };
 
+/** columns and relationships of "hotels" */
+export type Hotels = {
+   __typename?: 'hotels';
+  hotel_id: Scalars['Int'];
+  location: Scalars['String'];
+  /** An object relationship */
+  owner?: Maybe<Users>;
+  owner_id: Scalars['Int'];
+  title: Scalars['String'];
+};
+
+/** aggregated selection of "hotels" */
+export type Hotels_Aggregate = {
+   __typename?: 'hotels_aggregate';
+  aggregate?: Maybe<Hotels_Aggregate_Fields>;
+  nodes: Array<Hotels>;
+};
+
+/** aggregate fields of "hotels" */
+export type Hotels_Aggregate_Fields = {
+   __typename?: 'hotels_aggregate_fields';
+  avg?: Maybe<Hotels_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Hotels_Max_Fields>;
+  min?: Maybe<Hotels_Min_Fields>;
+  stddev?: Maybe<Hotels_Stddev_Fields>;
+  stddev_pop?: Maybe<Hotels_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Hotels_Stddev_Samp_Fields>;
+  sum?: Maybe<Hotels_Sum_Fields>;
+  var_pop?: Maybe<Hotels_Var_Pop_Fields>;
+  var_samp?: Maybe<Hotels_Var_Samp_Fields>;
+  variance?: Maybe<Hotels_Variance_Fields>;
+};
+
+
+/** aggregate fields of "hotels" */
+export type Hotels_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Hotels_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "hotels" */
+export type Hotels_Aggregate_Order_By = {
+  avg?: Maybe<Hotels_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Hotels_Max_Order_By>;
+  min?: Maybe<Hotels_Min_Order_By>;
+  stddev?: Maybe<Hotels_Stddev_Order_By>;
+  stddev_pop?: Maybe<Hotels_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Hotels_Stddev_Samp_Order_By>;
+  sum?: Maybe<Hotels_Sum_Order_By>;
+  var_pop?: Maybe<Hotels_Var_Pop_Order_By>;
+  var_samp?: Maybe<Hotels_Var_Samp_Order_By>;
+  variance?: Maybe<Hotels_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "hotels" */
+export type Hotels_Arr_Rel_Insert_Input = {
+  data: Array<Hotels_Insert_Input>;
+  on_conflict?: Maybe<Hotels_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Hotels_Avg_Fields = {
+   __typename?: 'hotels_avg_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "hotels" */
+export type Hotels_Avg_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "hotels". All fields are combined with a logical 'AND'. */
+export type Hotels_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Hotels_Bool_Exp>>>;
+  _not?: Maybe<Hotels_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Hotels_Bool_Exp>>>;
+  hotel_id?: Maybe<Int_Comparison_Exp>;
+  location?: Maybe<String_Comparison_Exp>;
+  owner?: Maybe<Users_Bool_Exp>;
+  owner_id?: Maybe<Int_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "hotels" */
+export enum Hotels_Constraint {
+  /** unique or primary key constraint */
+  HotelsPkey = 'hotels_pkey'
+}
+
+/** input type for incrementing integer columne in table "hotels" */
+export type Hotels_Inc_Input = {
+  hotel_id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "hotels" */
+export type Hotels_Insert_Input = {
+  hotel_id?: Maybe<Scalars['Int']>;
+  location?: Maybe<Scalars['String']>;
+  owner?: Maybe<Users_Obj_Rel_Insert_Input>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Hotels_Max_Fields = {
+   __typename?: 'hotels_max_fields';
+  hotel_id?: Maybe<Scalars['Int']>;
+  location?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "hotels" */
+export type Hotels_Max_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Hotels_Min_Fields = {
+   __typename?: 'hotels_min_fields';
+  hotel_id?: Maybe<Scalars['Int']>;
+  location?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "hotels" */
+export type Hotels_Min_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "hotels" */
+export type Hotels_Mutation_Response = {
+   __typename?: 'hotels_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Hotels>;
+};
+
+/** input type for inserting object relation for remote table "hotels" */
+export type Hotels_Obj_Rel_Insert_Input = {
+  data: Hotels_Insert_Input;
+  on_conflict?: Maybe<Hotels_On_Conflict>;
+};
+
+/** on conflict condition type for table "hotels" */
+export type Hotels_On_Conflict = {
+  constraint: Hotels_Constraint;
+  update_columns: Array<Hotels_Update_Column>;
+  where?: Maybe<Hotels_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "hotels" */
+export type Hotels_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  location?: Maybe<Order_By>;
+  owner?: Maybe<Users_Order_By>;
+  owner_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** select columns of table "hotels" */
+export enum Hotels_Select_Column {
+  /** column name */
+  HotelId = 'hotel_id',
+  /** column name */
+  Location = 'location',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** input type for updating data in table "hotels" */
+export type Hotels_Set_Input = {
+  hotel_id?: Maybe<Scalars['Int']>;
+  location?: Maybe<Scalars['String']>;
+  owner_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Hotels_Stddev_Fields = {
+   __typename?: 'hotels_stddev_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "hotels" */
+export type Hotels_Stddev_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Hotels_Stddev_Pop_Fields = {
+   __typename?: 'hotels_stddev_pop_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "hotels" */
+export type Hotels_Stddev_Pop_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Hotels_Stddev_Samp_Fields = {
+   __typename?: 'hotels_stddev_samp_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "hotels" */
+export type Hotels_Stddev_Samp_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Hotels_Sum_Fields = {
+   __typename?: 'hotels_sum_fields';
+  hotel_id?: Maybe<Scalars['Int']>;
+  owner_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "hotels" */
+export type Hotels_Sum_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "hotels" */
+export enum Hotels_Update_Column {
+  /** column name */
+  HotelId = 'hotel_id',
+  /** column name */
+  Location = 'location',
+  /** column name */
+  OwnerId = 'owner_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** aggregate var_pop on columns */
+export type Hotels_Var_Pop_Fields = {
+   __typename?: 'hotels_var_pop_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "hotels" */
+export type Hotels_Var_Pop_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Hotels_Var_Samp_Fields = {
+   __typename?: 'hotels_var_samp_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "hotels" */
+export type Hotels_Var_Samp_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Hotels_Variance_Fields = {
+   __typename?: 'hotels_variance_fields';
+  hotel_id?: Maybe<Scalars['Float']>;
+  owner_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "hotels" */
+export type Hotels_Variance_Order_By = {
+  hotel_id?: Maybe<Order_By>;
+  owner_id?: Maybe<Order_By>;
+};
+
 /** mutation root */
 export type Mutation_Root = {
    __typename?: 'mutation_root';
@@ -1136,6 +1432,8 @@ export type Mutation_Root = {
   delete_documents?: Maybe<Documents_Mutation_Response>;
   /** delete data from the table: "guests" */
   delete_guests?: Maybe<Guests_Mutation_Response>;
+  /** delete data from the table: "hotels" */
+  delete_hotels?: Maybe<Hotels_Mutation_Response>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** insert data into the table: "countries" */
@@ -1146,6 +1444,8 @@ export type Mutation_Root = {
   insert_documents?: Maybe<Documents_Mutation_Response>;
   /** insert data into the table: "guests" */
   insert_guests?: Maybe<Guests_Mutation_Response>;
+  /** insert data into the table: "hotels" */
+  insert_hotels?: Maybe<Hotels_Mutation_Response>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** update data of the table: "countries" */
@@ -1156,6 +1456,8 @@ export type Mutation_Root = {
   update_documents?: Maybe<Documents_Mutation_Response>;
   /** update data of the table: "guests" */
   update_guests?: Maybe<Guests_Mutation_Response>;
+  /** update data of the table: "hotels" */
+  update_hotels?: Maybe<Hotels_Mutation_Response>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
 };
@@ -1182,6 +1484,12 @@ export type Mutation_RootDelete_DocumentsArgs = {
 /** mutation root */
 export type Mutation_RootDelete_GuestsArgs = {
   where: Guests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_HotelsArgs = {
+  where: Hotels_Bool_Exp;
 };
 
 
@@ -1220,6 +1528,13 @@ export type Mutation_RootInsert_GuestsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_HotelsArgs = {
+  objects: Array<Hotels_Insert_Input>;
+  on_conflict?: Maybe<Hotels_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: Maybe<Users_On_Conflict>;
@@ -1254,6 +1569,14 @@ export type Mutation_RootUpdate_GuestsArgs = {
   _inc?: Maybe<Guests_Inc_Input>;
   _set?: Maybe<Guests_Set_Input>;
   where: Guests_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_HotelsArgs = {
+  _inc?: Maybe<Hotels_Inc_Input>;
+  _set?: Maybe<Hotels_Set_Input>;
+  where: Hotels_Bool_Exp;
 };
 
 
@@ -1307,6 +1630,12 @@ export type Query_Root = {
   guests_aggregate: Guests_Aggregate;
   /** fetch data from the table: "guests" using primary key columns */
   guests_by_pk?: Maybe<Guests>;
+  /** fetch data from the table: "hotels" */
+  hotels: Array<Hotels>;
+  /** fetch aggregated fields from the table: "hotels" */
+  hotels_aggregate: Hotels_Aggregate;
+  /** fetch data from the table: "hotels" using primary key columns */
+  hotels_by_pk?: Maybe<Hotels>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -1421,6 +1750,32 @@ export type Query_RootGuests_By_PkArgs = {
 
 
 /** query root */
+export type Query_RootHotelsArgs = {
+  distinct_on?: Maybe<Array<Hotels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Hotels_Order_By>>;
+  where?: Maybe<Hotels_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootHotels_AggregateArgs = {
+  distinct_on?: Maybe<Array<Hotels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Hotels_Order_By>>;
+  where?: Maybe<Hotels_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootHotels_By_PkArgs = {
+  hotel_id: Scalars['Int'];
+};
+
+
+/** query root */
 export type Query_RootUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -1472,6 +1827,12 @@ export type Subscription_Root = {
   guests_aggregate: Guests_Aggregate;
   /** fetch data from the table: "guests" using primary key columns */
   guests_by_pk?: Maybe<Guests>;
+  /** fetch data from the table: "hotels" */
+  hotels: Array<Hotels>;
+  /** fetch aggregated fields from the table: "hotels" */
+  hotels_aggregate: Hotels_Aggregate;
+  /** fetch data from the table: "hotels" using primary key columns */
+  hotels_by_pk?: Maybe<Hotels>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -1582,6 +1943,32 @@ export type Subscription_RootGuests_AggregateArgs = {
 /** subscription root */
 export type Subscription_RootGuests_By_PkArgs = {
   id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type Subscription_RootHotelsArgs = {
+  distinct_on?: Maybe<Array<Hotels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Hotels_Order_By>>;
+  where?: Maybe<Hotels_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootHotels_AggregateArgs = {
+  distinct_on?: Maybe<Array<Hotels_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Hotels_Order_By>>;
+  where?: Maybe<Hotels_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootHotels_By_PkArgs = {
+  hotel_id: Scalars['Int'];
 };
 
 
