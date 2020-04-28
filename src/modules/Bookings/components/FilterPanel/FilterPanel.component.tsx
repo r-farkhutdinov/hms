@@ -1,18 +1,28 @@
-import * as React from "react";
-import { DatePicker } from "antd";
-import * as moment from "moment";
-import style from "./FilterPanel.less";
-import { useIntl } from "react-intl";
+import * as React from 'react';
+import { DatePicker, Space } from 'antd';
+import style from './FilterPanel.less';
+import { useIntl } from 'react-intl';
+import { DateRangeType } from '../../Bookings.component';
+import { Moment } from 'moment';
 
 const { RangePicker } = DatePicker;
 
-export const FilterPanel: React.FC = () => {
+type Props = {
+  dates: DateRangeType;
+  setDates: (dates: DateRangeType) => void;
+};
+
+export const FilterPanel: React.FC<Props> = ({ dates, setDates }) => {
   const { formatMessage: f } = useIntl();
 
+  const onDatesChange = (values: Moment[]) => {
+    setDates({ startDate: values[0], endDate: values[1] });
+  };
+
   return (
-    <div className={style.panel}>
-      {f({ id: "config" })}
-      <RangePicker defaultValue={[moment(), moment().add(30, "d")]} />
-    </div>
+    <Space>
+      {f({ id: 'config' })}
+      <RangePicker onChange={onDatesChange} defaultValue={[dates.startDate, dates.endDate]} />
+    </Space>
   );
 };
