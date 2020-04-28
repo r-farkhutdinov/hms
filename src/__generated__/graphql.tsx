@@ -44,6 +44,337 @@ export type String_Comparison_Exp = {
   _similar?: Maybe<Scalars['String']>;
 };
 
+/** columns and relationships of "bookings" */
+export type Bookings = {
+   __typename?: 'bookings';
+  booking_id: Scalars['Int'];
+  date_end: Scalars['date'];
+  date_start: Scalars['date'];
+  /** An object relationship */
+  guest?: Maybe<Guests>;
+  guest_id: Scalars['Int'];
+  /** An object relationship */
+  room?: Maybe<Rooms>;
+  room_id: Scalars['Int'];
+};
+
+/** aggregated selection of "bookings" */
+export type Bookings_Aggregate = {
+   __typename?: 'bookings_aggregate';
+  aggregate?: Maybe<Bookings_Aggregate_Fields>;
+  nodes: Array<Bookings>;
+};
+
+/** aggregate fields of "bookings" */
+export type Bookings_Aggregate_Fields = {
+   __typename?: 'bookings_aggregate_fields';
+  avg?: Maybe<Bookings_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Bookings_Max_Fields>;
+  min?: Maybe<Bookings_Min_Fields>;
+  stddev?: Maybe<Bookings_Stddev_Fields>;
+  stddev_pop?: Maybe<Bookings_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Bookings_Stddev_Samp_Fields>;
+  sum?: Maybe<Bookings_Sum_Fields>;
+  var_pop?: Maybe<Bookings_Var_Pop_Fields>;
+  var_samp?: Maybe<Bookings_Var_Samp_Fields>;
+  variance?: Maybe<Bookings_Variance_Fields>;
+};
+
+
+/** aggregate fields of "bookings" */
+export type Bookings_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Bookings_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "bookings" */
+export type Bookings_Aggregate_Order_By = {
+  avg?: Maybe<Bookings_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Bookings_Max_Order_By>;
+  min?: Maybe<Bookings_Min_Order_By>;
+  stddev?: Maybe<Bookings_Stddev_Order_By>;
+  stddev_pop?: Maybe<Bookings_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Bookings_Stddev_Samp_Order_By>;
+  sum?: Maybe<Bookings_Sum_Order_By>;
+  var_pop?: Maybe<Bookings_Var_Pop_Order_By>;
+  var_samp?: Maybe<Bookings_Var_Samp_Order_By>;
+  variance?: Maybe<Bookings_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "bookings" */
+export type Bookings_Arr_Rel_Insert_Input = {
+  data: Array<Bookings_Insert_Input>;
+  on_conflict?: Maybe<Bookings_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Bookings_Avg_Fields = {
+   __typename?: 'bookings_avg_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "bookings" */
+export type Bookings_Avg_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "bookings". All fields are combined with a logical 'AND'. */
+export type Bookings_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Bookings_Bool_Exp>>>;
+  _not?: Maybe<Bookings_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Bookings_Bool_Exp>>>;
+  booking_id?: Maybe<Int_Comparison_Exp>;
+  date_end?: Maybe<Date_Comparison_Exp>;
+  date_start?: Maybe<Date_Comparison_Exp>;
+  guest?: Maybe<Guests_Bool_Exp>;
+  guest_id?: Maybe<Int_Comparison_Exp>;
+  room?: Maybe<Rooms_Bool_Exp>;
+  room_id?: Maybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "bookings" */
+export enum Bookings_Constraint {
+  /** unique or primary key constraint */
+  BookingsPkey = 'bookings_pkey'
+}
+
+/** input type for incrementing integer columne in table "bookings" */
+export type Bookings_Inc_Input = {
+  booking_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "bookings" */
+export type Bookings_Insert_Input = {
+  booking_id?: Maybe<Scalars['Int']>;
+  date_end?: Maybe<Scalars['date']>;
+  date_start?: Maybe<Scalars['date']>;
+  guest?: Maybe<Guests_Obj_Rel_Insert_Input>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room?: Maybe<Rooms_Obj_Rel_Insert_Input>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Bookings_Max_Fields = {
+   __typename?: 'bookings_max_fields';
+  booking_id?: Maybe<Scalars['Int']>;
+  date_end?: Maybe<Scalars['date']>;
+  date_start?: Maybe<Scalars['date']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "bookings" */
+export type Bookings_Max_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  date_end?: Maybe<Order_By>;
+  date_start?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Bookings_Min_Fields = {
+   __typename?: 'bookings_min_fields';
+  booking_id?: Maybe<Scalars['Int']>;
+  date_end?: Maybe<Scalars['date']>;
+  date_start?: Maybe<Scalars['date']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "bookings" */
+export type Bookings_Min_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  date_end?: Maybe<Order_By>;
+  date_start?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "bookings" */
+export type Bookings_Mutation_Response = {
+   __typename?: 'bookings_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Bookings>;
+};
+
+/** input type for inserting object relation for remote table "bookings" */
+export type Bookings_Obj_Rel_Insert_Input = {
+  data: Bookings_Insert_Input;
+  on_conflict?: Maybe<Bookings_On_Conflict>;
+};
+
+/** on conflict condition type for table "bookings" */
+export type Bookings_On_Conflict = {
+  constraint: Bookings_Constraint;
+  update_columns: Array<Bookings_Update_Column>;
+  where?: Maybe<Bookings_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "bookings" */
+export type Bookings_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  date_end?: Maybe<Order_By>;
+  date_start?: Maybe<Order_By>;
+  guest?: Maybe<Guests_Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room?: Maybe<Rooms_Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** select columns of table "bookings" */
+export enum Bookings_Select_Column {
+  /** column name */
+  BookingId = 'booking_id',
+  /** column name */
+  DateEnd = 'date_end',
+  /** column name */
+  DateStart = 'date_start',
+  /** column name */
+  GuestId = 'guest_id',
+  /** column name */
+  RoomId = 'room_id'
+}
+
+/** input type for updating data in table "bookings" */
+export type Bookings_Set_Input = {
+  booking_id?: Maybe<Scalars['Int']>;
+  date_end?: Maybe<Scalars['date']>;
+  date_start?: Maybe<Scalars['date']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Bookings_Stddev_Fields = {
+   __typename?: 'bookings_stddev_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "bookings" */
+export type Bookings_Stddev_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Bookings_Stddev_Pop_Fields = {
+   __typename?: 'bookings_stddev_pop_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "bookings" */
+export type Bookings_Stddev_Pop_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Bookings_Stddev_Samp_Fields = {
+   __typename?: 'bookings_stddev_samp_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "bookings" */
+export type Bookings_Stddev_Samp_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Bookings_Sum_Fields = {
+   __typename?: 'bookings_sum_fields';
+  booking_id?: Maybe<Scalars['Int']>;
+  guest_id?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "bookings" */
+export type Bookings_Sum_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "bookings" */
+export enum Bookings_Update_Column {
+  /** column name */
+  BookingId = 'booking_id',
+  /** column name */
+  DateEnd = 'date_end',
+  /** column name */
+  DateStart = 'date_start',
+  /** column name */
+  GuestId = 'guest_id',
+  /** column name */
+  RoomId = 'room_id'
+}
+
+/** aggregate var_pop on columns */
+export type Bookings_Var_Pop_Fields = {
+   __typename?: 'bookings_var_pop_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "bookings" */
+export type Bookings_Var_Pop_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Bookings_Var_Samp_Fields = {
+   __typename?: 'bookings_var_samp_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "bookings" */
+export type Bookings_Var_Samp_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Bookings_Variance_Fields = {
+   __typename?: 'bookings_variance_fields';
+  booking_id?: Maybe<Scalars['Float']>;
+  guest_id?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "bookings" */
+export type Bookings_Variance_Order_By = {
+  booking_id?: Maybe<Order_By>;
+  guest_id?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+};
+
 /** columns and relationships of "countries" */
 export type Countries = {
    __typename?: 'countries';
@@ -1424,6 +1755,8 @@ export type Hotels_Variance_Order_By = {
 /** mutation root */
 export type Mutation_Root = {
    __typename?: 'mutation_root';
+  /** delete data from the table: "bookings" */
+  delete_bookings?: Maybe<Bookings_Mutation_Response>;
   /** delete data from the table: "countries" */
   delete_countries?: Maybe<Countries_Mutation_Response>;
   /** delete data from the table: "document_types_enum" */
@@ -1434,8 +1767,14 @@ export type Mutation_Root = {
   delete_guests?: Maybe<Guests_Mutation_Response>;
   /** delete data from the table: "hotels" */
   delete_hotels?: Maybe<Hotels_Mutation_Response>;
+  /** delete data from the table: "room_types" */
+  delete_room_types?: Maybe<Room_Types_Mutation_Response>;
+  /** delete data from the table: "rooms" */
+  delete_rooms?: Maybe<Rooms_Mutation_Response>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
+  /** insert data into the table: "bookings" */
+  insert_bookings?: Maybe<Bookings_Mutation_Response>;
   /** insert data into the table: "countries" */
   insert_countries?: Maybe<Countries_Mutation_Response>;
   /** insert data into the table: "document_types_enum" */
@@ -1446,8 +1785,14 @@ export type Mutation_Root = {
   insert_guests?: Maybe<Guests_Mutation_Response>;
   /** insert data into the table: "hotels" */
   insert_hotels?: Maybe<Hotels_Mutation_Response>;
+  /** insert data into the table: "room_types" */
+  insert_room_types?: Maybe<Room_Types_Mutation_Response>;
+  /** insert data into the table: "rooms" */
+  insert_rooms?: Maybe<Rooms_Mutation_Response>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
+  /** update data of the table: "bookings" */
+  update_bookings?: Maybe<Bookings_Mutation_Response>;
   /** update data of the table: "countries" */
   update_countries?: Maybe<Countries_Mutation_Response>;
   /** update data of the table: "document_types_enum" */
@@ -1458,8 +1803,18 @@ export type Mutation_Root = {
   update_guests?: Maybe<Guests_Mutation_Response>;
   /** update data of the table: "hotels" */
   update_hotels?: Maybe<Hotels_Mutation_Response>;
+  /** update data of the table: "room_types" */
+  update_room_types?: Maybe<Room_Types_Mutation_Response>;
+  /** update data of the table: "rooms" */
+  update_rooms?: Maybe<Rooms_Mutation_Response>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_BookingsArgs = {
+  where: Bookings_Bool_Exp;
 };
 
 
@@ -1494,8 +1849,27 @@ export type Mutation_RootDelete_HotelsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootDelete_Room_TypesArgs = {
+  where: Room_Types_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_RoomsArgs = {
+  where: Rooms_Bool_Exp;
+};
+
+
+/** mutation root */
 export type Mutation_RootDelete_UsersArgs = {
   where: Users_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_BookingsArgs = {
+  objects: Array<Bookings_Insert_Input>;
+  on_conflict?: Maybe<Bookings_On_Conflict>;
 };
 
 
@@ -1535,9 +1909,31 @@ export type Mutation_RootInsert_HotelsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootInsert_Room_TypesArgs = {
+  objects: Array<Room_Types_Insert_Input>;
+  on_conflict?: Maybe<Room_Types_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_RoomsArgs = {
+  objects: Array<Rooms_Insert_Input>;
+  on_conflict?: Maybe<Rooms_On_Conflict>;
+};
+
+
+/** mutation root */
 export type Mutation_RootInsert_UsersArgs = {
   objects: Array<Users_Insert_Input>;
   on_conflict?: Maybe<Users_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_BookingsArgs = {
+  _inc?: Maybe<Bookings_Inc_Input>;
+  _set?: Maybe<Bookings_Set_Input>;
+  where: Bookings_Bool_Exp;
 };
 
 
@@ -1581,6 +1977,22 @@ export type Mutation_RootUpdate_HotelsArgs = {
 
 
 /** mutation root */
+export type Mutation_RootUpdate_Room_TypesArgs = {
+  _inc?: Maybe<Room_Types_Inc_Input>;
+  _set?: Maybe<Room_Types_Set_Input>;
+  where: Room_Types_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_RoomsArgs = {
+  _inc?: Maybe<Rooms_Inc_Input>;
+  _set?: Maybe<Rooms_Set_Input>;
+  where: Rooms_Bool_Exp;
+};
+
+
+/** mutation root */
 export type Mutation_RootUpdate_UsersArgs = {
   _inc?: Maybe<Users_Inc_Input>;
   _set?: Maybe<Users_Set_Input>;
@@ -1606,6 +2018,12 @@ export enum Order_By {
 /** query root */
 export type Query_Root = {
    __typename?: 'query_root';
+  /** fetch data from the table: "bookings" */
+  bookings: Array<Bookings>;
+  /** fetch aggregated fields from the table: "bookings" */
+  bookings_aggregate: Bookings_Aggregate;
+  /** fetch data from the table: "bookings" using primary key columns */
+  bookings_by_pk?: Maybe<Bookings>;
   /** fetch data from the table: "countries" */
   countries: Array<Countries>;
   /** fetch aggregated fields from the table: "countries" */
@@ -1636,12 +2054,50 @@ export type Query_Root = {
   hotels_aggregate: Hotels_Aggregate;
   /** fetch data from the table: "hotels" using primary key columns */
   hotels_by_pk?: Maybe<Hotels>;
+  /** fetch data from the table: "room_types" */
+  room_types: Array<Room_Types>;
+  /** fetch aggregated fields from the table: "room_types" */
+  room_types_aggregate: Room_Types_Aggregate;
+  /** fetch data from the table: "room_types" using primary key columns */
+  room_types_by_pk?: Maybe<Room_Types>;
+  /** fetch data from the table: "rooms" */
+  rooms: Array<Rooms>;
+  /** fetch aggregated fields from the table: "rooms" */
+  rooms_aggregate: Rooms_Aggregate;
+  /** fetch data from the table: "rooms" using primary key columns */
+  rooms_by_pk?: Maybe<Rooms>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+/** query root */
+export type Query_RootBookingsArgs = {
+  distinct_on?: Maybe<Array<Bookings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Bookings_Order_By>>;
+  where?: Maybe<Bookings_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootBookings_AggregateArgs = {
+  distinct_on?: Maybe<Array<Bookings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Bookings_Order_By>>;
+  where?: Maybe<Bookings_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootBookings_By_PkArgs = {
+  booking_id: Scalars['Int'];
 };
 
 
@@ -1776,6 +2232,58 @@ export type Query_RootHotels_By_PkArgs = {
 
 
 /** query root */
+export type Query_RootRoom_TypesArgs = {
+  distinct_on?: Maybe<Array<Room_Types_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Room_Types_Order_By>>;
+  where?: Maybe<Room_Types_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootRoom_Types_AggregateArgs = {
+  distinct_on?: Maybe<Array<Room_Types_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Room_Types_Order_By>>;
+  where?: Maybe<Room_Types_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootRoom_Types_By_PkArgs = {
+  room_type_id: Scalars['Int'];
+};
+
+
+/** query root */
+export type Query_RootRoomsArgs = {
+  distinct_on?: Maybe<Array<Rooms_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Rooms_Order_By>>;
+  where?: Maybe<Rooms_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootRooms_AggregateArgs = {
+  distinct_on?: Maybe<Array<Rooms_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Rooms_Order_By>>;
+  where?: Maybe<Rooms_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootRooms_By_PkArgs = {
+  room_id: Scalars['Int'];
+};
+
+
+/** query root */
 export type Query_RootUsersArgs = {
   distinct_on?: Maybe<Array<Users_Select_Column>>;
   limit?: Maybe<Scalars['Int']>;
@@ -1800,9 +2308,563 @@ export type Query_RootUsers_By_PkArgs = {
   id: Scalars['Int'];
 };
 
+/**
+ * Room types
+ * 
+ * 
+ * columns and relationships of "room_types"
+ */
+export type Room_Types = {
+   __typename?: 'room_types';
+  room_type_id: Scalars['Int'];
+  title: Scalars['String'];
+};
+
+/** aggregated selection of "room_types" */
+export type Room_Types_Aggregate = {
+   __typename?: 'room_types_aggregate';
+  aggregate?: Maybe<Room_Types_Aggregate_Fields>;
+  nodes: Array<Room_Types>;
+};
+
+/** aggregate fields of "room_types" */
+export type Room_Types_Aggregate_Fields = {
+   __typename?: 'room_types_aggregate_fields';
+  avg?: Maybe<Room_Types_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Room_Types_Max_Fields>;
+  min?: Maybe<Room_Types_Min_Fields>;
+  stddev?: Maybe<Room_Types_Stddev_Fields>;
+  stddev_pop?: Maybe<Room_Types_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Room_Types_Stddev_Samp_Fields>;
+  sum?: Maybe<Room_Types_Sum_Fields>;
+  var_pop?: Maybe<Room_Types_Var_Pop_Fields>;
+  var_samp?: Maybe<Room_Types_Var_Samp_Fields>;
+  variance?: Maybe<Room_Types_Variance_Fields>;
+};
+
+
+/** aggregate fields of "room_types" */
+export type Room_Types_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Room_Types_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "room_types" */
+export type Room_Types_Aggregate_Order_By = {
+  avg?: Maybe<Room_Types_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Room_Types_Max_Order_By>;
+  min?: Maybe<Room_Types_Min_Order_By>;
+  stddev?: Maybe<Room_Types_Stddev_Order_By>;
+  stddev_pop?: Maybe<Room_Types_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Room_Types_Stddev_Samp_Order_By>;
+  sum?: Maybe<Room_Types_Sum_Order_By>;
+  var_pop?: Maybe<Room_Types_Var_Pop_Order_By>;
+  var_samp?: Maybe<Room_Types_Var_Samp_Order_By>;
+  variance?: Maybe<Room_Types_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "room_types" */
+export type Room_Types_Arr_Rel_Insert_Input = {
+  data: Array<Room_Types_Insert_Input>;
+  on_conflict?: Maybe<Room_Types_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Room_Types_Avg_Fields = {
+   __typename?: 'room_types_avg_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "room_types" */
+export type Room_Types_Avg_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "room_types". All fields are combined with a logical 'AND'. */
+export type Room_Types_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Room_Types_Bool_Exp>>>;
+  _not?: Maybe<Room_Types_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Room_Types_Bool_Exp>>>;
+  room_type_id?: Maybe<Int_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "room_types" */
+export enum Room_Types_Constraint {
+  /** unique or primary key constraint */
+  RoomTypesPkey = 'room_types_pkey'
+}
+
+/** input type for incrementing integer columne in table "room_types" */
+export type Room_Types_Inc_Input = {
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "room_types" */
+export type Room_Types_Insert_Input = {
+  room_type_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Room_Types_Max_Fields = {
+   __typename?: 'room_types_max_fields';
+  room_type_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "room_types" */
+export type Room_Types_Max_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Room_Types_Min_Fields = {
+   __typename?: 'room_types_min_fields';
+  room_type_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "room_types" */
+export type Room_Types_Min_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "room_types" */
+export type Room_Types_Mutation_Response = {
+   __typename?: 'room_types_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Room_Types>;
+};
+
+/** input type for inserting object relation for remote table "room_types" */
+export type Room_Types_Obj_Rel_Insert_Input = {
+  data: Room_Types_Insert_Input;
+  on_conflict?: Maybe<Room_Types_On_Conflict>;
+};
+
+/** on conflict condition type for table "room_types" */
+export type Room_Types_On_Conflict = {
+  constraint: Room_Types_Constraint;
+  update_columns: Array<Room_Types_Update_Column>;
+  where?: Maybe<Room_Types_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "room_types" */
+export type Room_Types_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** select columns of table "room_types" */
+export enum Room_Types_Select_Column {
+  /** column name */
+  RoomTypeId = 'room_type_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** input type for updating data in table "room_types" */
+export type Room_Types_Set_Input = {
+  room_type_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Room_Types_Stddev_Fields = {
+   __typename?: 'room_types_stddev_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "room_types" */
+export type Room_Types_Stddev_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Room_Types_Stddev_Pop_Fields = {
+   __typename?: 'room_types_stddev_pop_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "room_types" */
+export type Room_Types_Stddev_Pop_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Room_Types_Stddev_Samp_Fields = {
+   __typename?: 'room_types_stddev_samp_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "room_types" */
+export type Room_Types_Stddev_Samp_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Room_Types_Sum_Fields = {
+   __typename?: 'room_types_sum_fields';
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "room_types" */
+export type Room_Types_Sum_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "room_types" */
+export enum Room_Types_Update_Column {
+  /** column name */
+  RoomTypeId = 'room_type_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** aggregate var_pop on columns */
+export type Room_Types_Var_Pop_Fields = {
+   __typename?: 'room_types_var_pop_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "room_types" */
+export type Room_Types_Var_Pop_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Room_Types_Var_Samp_Fields = {
+   __typename?: 'room_types_var_samp_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "room_types" */
+export type Room_Types_Var_Samp_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Room_Types_Variance_Fields = {
+   __typename?: 'room_types_variance_fields';
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "room_types" */
+export type Room_Types_Variance_Order_By = {
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** columns and relationships of "rooms" */
+export type Rooms = {
+   __typename?: 'rooms';
+  number: Scalars['Int'];
+  room_id: Scalars['Int'];
+  room_type_id: Scalars['Int'];
+};
+
+/** aggregated selection of "rooms" */
+export type Rooms_Aggregate = {
+   __typename?: 'rooms_aggregate';
+  aggregate?: Maybe<Rooms_Aggregate_Fields>;
+  nodes: Array<Rooms>;
+};
+
+/** aggregate fields of "rooms" */
+export type Rooms_Aggregate_Fields = {
+   __typename?: 'rooms_aggregate_fields';
+  avg?: Maybe<Rooms_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Rooms_Max_Fields>;
+  min?: Maybe<Rooms_Min_Fields>;
+  stddev?: Maybe<Rooms_Stddev_Fields>;
+  stddev_pop?: Maybe<Rooms_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Rooms_Stddev_Samp_Fields>;
+  sum?: Maybe<Rooms_Sum_Fields>;
+  var_pop?: Maybe<Rooms_Var_Pop_Fields>;
+  var_samp?: Maybe<Rooms_Var_Samp_Fields>;
+  variance?: Maybe<Rooms_Variance_Fields>;
+};
+
+
+/** aggregate fields of "rooms" */
+export type Rooms_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Rooms_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "rooms" */
+export type Rooms_Aggregate_Order_By = {
+  avg?: Maybe<Rooms_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Rooms_Max_Order_By>;
+  min?: Maybe<Rooms_Min_Order_By>;
+  stddev?: Maybe<Rooms_Stddev_Order_By>;
+  stddev_pop?: Maybe<Rooms_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Rooms_Stddev_Samp_Order_By>;
+  sum?: Maybe<Rooms_Sum_Order_By>;
+  var_pop?: Maybe<Rooms_Var_Pop_Order_By>;
+  var_samp?: Maybe<Rooms_Var_Samp_Order_By>;
+  variance?: Maybe<Rooms_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "rooms" */
+export type Rooms_Arr_Rel_Insert_Input = {
+  data: Array<Rooms_Insert_Input>;
+  on_conflict?: Maybe<Rooms_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Rooms_Avg_Fields = {
+   __typename?: 'rooms_avg_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "rooms" */
+export type Rooms_Avg_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "rooms". All fields are combined with a logical 'AND'. */
+export type Rooms_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Rooms_Bool_Exp>>>;
+  _not?: Maybe<Rooms_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Rooms_Bool_Exp>>>;
+  number?: Maybe<Int_Comparison_Exp>;
+  room_id?: Maybe<Int_Comparison_Exp>;
+  room_type_id?: Maybe<Int_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "rooms" */
+export enum Rooms_Constraint {
+  /** unique or primary key constraint */
+  RoomsPkey = 'rooms_pkey'
+}
+
+/** input type for incrementing integer columne in table "rooms" */
+export type Rooms_Inc_Input = {
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "rooms" */
+export type Rooms_Insert_Input = {
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate max on columns */
+export type Rooms_Max_Fields = {
+   __typename?: 'rooms_max_fields';
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by max() on columns of table "rooms" */
+export type Rooms_Max_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Rooms_Min_Fields = {
+   __typename?: 'rooms_min_fields';
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by min() on columns of table "rooms" */
+export type Rooms_Min_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "rooms" */
+export type Rooms_Mutation_Response = {
+   __typename?: 'rooms_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Rooms>;
+};
+
+/** input type for inserting object relation for remote table "rooms" */
+export type Rooms_Obj_Rel_Insert_Input = {
+  data: Rooms_Insert_Input;
+  on_conflict?: Maybe<Rooms_On_Conflict>;
+};
+
+/** on conflict condition type for table "rooms" */
+export type Rooms_On_Conflict = {
+  constraint: Rooms_Constraint;
+  update_columns: Array<Rooms_Update_Column>;
+  where?: Maybe<Rooms_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "rooms" */
+export type Rooms_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** select columns of table "rooms" */
+export enum Rooms_Select_Column {
+  /** column name */
+  Number = 'number',
+  /** column name */
+  RoomId = 'room_id',
+  /** column name */
+  RoomTypeId = 'room_type_id'
+}
+
+/** input type for updating data in table "rooms" */
+export type Rooms_Set_Input = {
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** aggregate stddev on columns */
+export type Rooms_Stddev_Fields = {
+   __typename?: 'rooms_stddev_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "rooms" */
+export type Rooms_Stddev_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Rooms_Stddev_Pop_Fields = {
+   __typename?: 'rooms_stddev_pop_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "rooms" */
+export type Rooms_Stddev_Pop_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Rooms_Stddev_Samp_Fields = {
+   __typename?: 'rooms_stddev_samp_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "rooms" */
+export type Rooms_Stddev_Samp_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Rooms_Sum_Fields = {
+   __typename?: 'rooms_sum_fields';
+  number?: Maybe<Scalars['Int']>;
+  room_id?: Maybe<Scalars['Int']>;
+  room_type_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "rooms" */
+export type Rooms_Sum_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "rooms" */
+export enum Rooms_Update_Column {
+  /** column name */
+  Number = 'number',
+  /** column name */
+  RoomId = 'room_id',
+  /** column name */
+  RoomTypeId = 'room_type_id'
+}
+
+/** aggregate var_pop on columns */
+export type Rooms_Var_Pop_Fields = {
+   __typename?: 'rooms_var_pop_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "rooms" */
+export type Rooms_Var_Pop_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Rooms_Var_Samp_Fields = {
+   __typename?: 'rooms_var_samp_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "rooms" */
+export type Rooms_Var_Samp_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Rooms_Variance_Fields = {
+   __typename?: 'rooms_variance_fields';
+  number?: Maybe<Scalars['Float']>;
+  room_id?: Maybe<Scalars['Float']>;
+  room_type_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "rooms" */
+export type Rooms_Variance_Order_By = {
+  number?: Maybe<Order_By>;
+  room_id?: Maybe<Order_By>;
+  room_type_id?: Maybe<Order_By>;
+};
+
 /** subscription root */
 export type Subscription_Root = {
    __typename?: 'subscription_root';
+  /** fetch data from the table: "bookings" */
+  bookings: Array<Bookings>;
+  /** fetch aggregated fields from the table: "bookings" */
+  bookings_aggregate: Bookings_Aggregate;
+  /** fetch data from the table: "bookings" using primary key columns */
+  bookings_by_pk?: Maybe<Bookings>;
   /** fetch data from the table: "countries" */
   countries: Array<Countries>;
   /** fetch aggregated fields from the table: "countries" */
@@ -1833,12 +2895,50 @@ export type Subscription_Root = {
   hotels_aggregate: Hotels_Aggregate;
   /** fetch data from the table: "hotels" using primary key columns */
   hotels_by_pk?: Maybe<Hotels>;
+  /** fetch data from the table: "room_types" */
+  room_types: Array<Room_Types>;
+  /** fetch aggregated fields from the table: "room_types" */
+  room_types_aggregate: Room_Types_Aggregate;
+  /** fetch data from the table: "room_types" using primary key columns */
+  room_types_by_pk?: Maybe<Room_Types>;
+  /** fetch data from the table: "rooms" */
+  rooms: Array<Rooms>;
+  /** fetch aggregated fields from the table: "rooms" */
+  rooms_aggregate: Rooms_Aggregate;
+  /** fetch data from the table: "rooms" using primary key columns */
+  rooms_by_pk?: Maybe<Rooms>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
   users_aggregate: Users_Aggregate;
   /** fetch data from the table: "users" using primary key columns */
   users_by_pk?: Maybe<Users>;
+};
+
+
+/** subscription root */
+export type Subscription_RootBookingsArgs = {
+  distinct_on?: Maybe<Array<Bookings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Bookings_Order_By>>;
+  where?: Maybe<Bookings_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootBookings_AggregateArgs = {
+  distinct_on?: Maybe<Array<Bookings_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Bookings_Order_By>>;
+  where?: Maybe<Bookings_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootBookings_By_PkArgs = {
+  booking_id: Scalars['Int'];
 };
 
 
@@ -1969,6 +3069,58 @@ export type Subscription_RootHotels_AggregateArgs = {
 /** subscription root */
 export type Subscription_RootHotels_By_PkArgs = {
   hotel_id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type Subscription_RootRoom_TypesArgs = {
+  distinct_on?: Maybe<Array<Room_Types_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Room_Types_Order_By>>;
+  where?: Maybe<Room_Types_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootRoom_Types_AggregateArgs = {
+  distinct_on?: Maybe<Array<Room_Types_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Room_Types_Order_By>>;
+  where?: Maybe<Room_Types_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootRoom_Types_By_PkArgs = {
+  room_type_id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type Subscription_RootRoomsArgs = {
+  distinct_on?: Maybe<Array<Rooms_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Rooms_Order_By>>;
+  where?: Maybe<Rooms_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootRooms_AggregateArgs = {
+  distinct_on?: Maybe<Array<Rooms_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Rooms_Order_By>>;
+  where?: Maybe<Rooms_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootRooms_By_PkArgs = {
+  room_id: Scalars['Int'];
 };
 
 
@@ -2263,6 +3415,22 @@ export type Users_Variance_Order_By = {
   id?: Maybe<Order_By>;
 };
 
+export type BookingFragment = { __typename?: 'bookings', booking_id: number, date_end: any, date_start: any, guest_id: number, room_id: number, guest?: Maybe<(
+    { __typename?: 'guests' }
+    & GuestsListFieldsFragment
+  )>, room?: Maybe<{ __typename?: 'rooms', number: number, room_id: number }> };
+
+export type FetchBookingsQueryVariables = {
+  startDate: Scalars['date'];
+  endDate: Scalars['date'];
+};
+
+
+export type FetchBookingsQuery = { __typename?: 'query_root', bookings: Array<(
+    { __typename?: 'bookings' }
+    & BookingFragment
+  )>, rooms: Array<{ __typename?: 'rooms', number: number, room_id: number }> };
+
 export type GuestsListFieldsFragment = { __typename?: 'guests', id: number, firstName: string, lastName: string, country?: Maybe<{ __typename?: 'countries', id: number, name: string }> };
 
 export type FetchGuestsQueryVariables = {};
@@ -2294,6 +3462,60 @@ export const GuestsListFieldsFragmentDoc = gql`
   }
 }
     `;
+export const BookingFragmentDoc = gql`
+    fragment Booking on bookings {
+  booking_id
+  date_end
+  date_start
+  guest_id
+  room_id
+  guest {
+    ...GuestsListFields
+  }
+  room {
+    number
+    room_id
+  }
+}
+    ${GuestsListFieldsFragmentDoc}`;
+export const FetchBookingsDocument = gql`
+    query fetchBookings($startDate: date!, $endDate: date!) {
+  bookings(where: {_or: {date_end: {_lte: $endDate}, date_start: {_gte: $startDate}}}) {
+    ...Booking
+  }
+  rooms {
+    number
+    room_id
+  }
+}
+    ${BookingFragmentDoc}`;
+
+/**
+ * __useFetchBookingsQuery__
+ *
+ * To run a query within a React component, call `useFetchBookingsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchBookingsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchBookingsQuery({
+ *   variables: {
+ *      startDate: // value for 'startDate'
+ *      endDate: // value for 'endDate'
+ *   },
+ * });
+ */
+export function useFetchBookingsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchBookingsQuery, FetchBookingsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FetchBookingsQuery, FetchBookingsQueryVariables>(FetchBookingsDocument, baseOptions);
+      }
+export function useFetchBookingsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchBookingsQuery, FetchBookingsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FetchBookingsQuery, FetchBookingsQueryVariables>(FetchBookingsDocument, baseOptions);
+        }
+export type FetchBookingsQueryHookResult = ReturnType<typeof useFetchBookingsQuery>;
+export type FetchBookingsLazyQueryHookResult = ReturnType<typeof useFetchBookingsLazyQuery>;
+export type FetchBookingsQueryResult = ApolloReactCommon.QueryResult<FetchBookingsQuery, FetchBookingsQueryVariables>;
 export const FetchGuestsDocument = gql`
     query fetchGuests {
   guests {

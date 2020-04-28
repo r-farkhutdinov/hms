@@ -5,12 +5,14 @@ import { DateRangeType } from '../../Bookings.component';
 import style from './BookingsTable.less';
 import weekday from 'dayjs/plugin/weekday';
 import { getBookingStyle } from './util';
+import { FetchBookingsQuery } from '../../../../__generated__/graphql';
 
 dayjs.extend(weekday);
 
 type Props = {
   dates: DateRangeType;
   zoom: number;
+  data: FetchBookingsQuery;
 };
 
 const getTransparentGrid = (rows: number, columns: number) => {
@@ -31,10 +33,10 @@ const getTransparentGrid = (rows: number, columns: number) => {
   return result;
 };
 
-export const BookingsTable: React.FC<Props> = ({ dates, zoom }) => {
+export const BookingsTable: React.FC<Props> = ({ dates, zoom, data }) => {
   const distinctDays = getDatesInRange(dates.startDate.toDate(), dates.endDate.toDate());
 
-  const roomsAmount = 3;
+  const roomsAmount = data?.rooms.length;
 
   const cellSize = 50;
 
@@ -75,21 +77,23 @@ export const BookingsTable: React.FC<Props> = ({ dates, zoom }) => {
           ))}
         </div>
         <div className={style.roomsGridContainer} style={roomsContainerStyle}>
-          {rooms.map((r, index) => (
-            <div key={index} style={{ gridRowStart: index + 1, gridRowEnd: index + 1 }} className={style.room}>
-              {r}
+          {data?.rooms.map((r, index) => (
+            <div key={r.room_id} style={{ gridRowStart: index + 1, gridRowEnd: index + 1 }} className={style.room}>
+              {r.number}
             </div>
           ))}
         </div>
         <div className={style.bookingsGridContainer} style={bookingsContainerStyle}>
-          <div
-            className={style.booking}
-            style={getBookingStyle(testBooking.start, testBooking.end, testBooking.room, rooms, distinctDays)}
-          >
-            {testBooking.name}
-          </div>
+          {data?.bookings.map(b => (
+            <div
+              className={style.booking}
+              style={getBookingStyle(b.date_start, b.date_end, b.room.number, data.rooms, distinctDays)}
+            >
+              {`${b.guest?.firstName} ${b.guest?.lastName}`}
+            </div>
+          ))}
 
-          {getTransparentGrid(rooms.length, distinctDays.length)}
+          {getTransparentGrid(data?.rooms.length, distinctDays.length)}
         </div>
       </div>
     </>

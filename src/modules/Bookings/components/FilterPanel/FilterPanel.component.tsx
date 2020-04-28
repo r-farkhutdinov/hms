@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, Space, Slider } from 'antd';
+import { DatePicker, Space, Slider, Input } from 'antd';
 import style from './FilterPanel.less';
 import { useIntl } from 'react-intl';
 import { DateRangeType } from '../../Bookings.component';
@@ -29,18 +29,20 @@ export const FilterPanel: React.FC<Props> = ({ dates, setDates, zoom, setZoom })
         {f({ id: 'config' })}
         <RangePicker onChange={onDatesChange} defaultValue={[dates.startDate, dates.endDate]} />
 
-        <Slider
-          marks={{ 1: 'small', 10: 'large' }}
-          style={{ width: 100, margin: '0 30px' }}
-          min={1}
-          max={10}
-          onChange={v => setZoom(v as number)}
-          value={zoom}
-        />
+        <Input placeholder={'Find booking by guest name'} />
 
         <Button type="primary" icon={<PlusOutlined />}>
           Add booking
         </Button>
+
+        <Slider
+          marks={{ 1: 'small', 20: 'large' }}
+          style={{ width: 200, margin: '0 30px' }}
+          min={1}
+          max={20}
+          onChange={v => setZoom(v as number)}
+          value={zoom}
+        />
       </Space>
     </div>
   );
