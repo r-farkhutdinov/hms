@@ -3451,6 +3451,26 @@ export type InsertGuestMutation = { __typename?: 'mutation_root', insert_guests?
       & GuestsListFieldsFragment
     )> }> };
 
+export type HotelFieldsFragment = { __typename?: 'hotels', hotel_id: number, location: string, owner_id: number, title: string, owner?: Maybe<{ __typename?: 'users', first_name: string, id: number, last_name: string }> };
+
+export type FetchHotelsQueryVariables = {};
+
+
+export type FetchHotelsQuery = { __typename?: 'query_root', hotels: Array<(
+    { __typename?: 'hotels' }
+    & HotelFieldsFragment
+  )> };
+
+export type CreateHotelMutationVariables = {
+  objects: Array<Hotels_Insert_Input>;
+};
+
+
+export type CreateHotelMutation = { __typename?: 'mutation_root', insert_hotels?: Maybe<{ __typename?: 'hotels_mutation_response', returning: Array<(
+      { __typename?: 'hotels' }
+      & HotelFieldsFragment
+    )> }> };
+
 export const GuestsListFieldsFragmentDoc = gql`
     fragment GuestsListFields on guests {
   id
@@ -3478,9 +3498,22 @@ export const BookingFragmentDoc = gql`
   }
 }
     ${GuestsListFieldsFragmentDoc}`;
+export const HotelFieldsFragmentDoc = gql`
+    fragment HotelFields on hotels {
+  hotel_id
+  location
+  owner {
+    first_name
+    id
+    last_name
+  }
+  owner_id
+  title
+}
+    `;
 export const FetchBookingsDocument = gql`
     query fetchBookings($startDate: date!, $endDate: date!) {
-  bookings(where: {_or: {date_end: {_lte: $endDate}, date_start: {_gte: $startDate}}}) {
+  bookings(where: {_or: {date_start: {_gte: $startDate}, date_end: {_lte: $endDate}}}) {
     ...Booking
   }
   rooms {
@@ -3582,3 +3615,69 @@ export function useInsertGuestMutation(baseOptions?: ApolloReactHooks.MutationHo
 export type InsertGuestMutationHookResult = ReturnType<typeof useInsertGuestMutation>;
 export type InsertGuestMutationResult = ApolloReactCommon.MutationResult<InsertGuestMutation>;
 export type InsertGuestMutationOptions = ApolloReactCommon.BaseMutationOptions<InsertGuestMutation, InsertGuestMutationVariables>;
+export const FetchHotelsDocument = gql`
+    query fetchHotels {
+  hotels {
+    ...HotelFields
+  }
+}
+    ${HotelFieldsFragmentDoc}`;
+
+/**
+ * __useFetchHotelsQuery__
+ *
+ * To run a query within a React component, call `useFetchHotelsQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchHotelsQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchHotelsQuery({
+ *   variables: {
+ *   },
+ * });
+ */
+export function useFetchHotelsQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchHotelsQuery, FetchHotelsQueryVariables>) {
+        return ApolloReactHooks.useQuery<FetchHotelsQuery, FetchHotelsQueryVariables>(FetchHotelsDocument, baseOptions);
+      }
+export function useFetchHotelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchHotelsQuery, FetchHotelsQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FetchHotelsQuery, FetchHotelsQueryVariables>(FetchHotelsDocument, baseOptions);
+        }
+export type FetchHotelsQueryHookResult = ReturnType<typeof useFetchHotelsQuery>;
+export type FetchHotelsLazyQueryHookResult = ReturnType<typeof useFetchHotelsLazyQuery>;
+export type FetchHotelsQueryResult = ApolloReactCommon.QueryResult<FetchHotelsQuery, FetchHotelsQueryVariables>;
+export const CreateHotelDocument = gql`
+    mutation createHotel($objects: [hotels_insert_input!]!) {
+  insert_hotels(objects: $objects) {
+    returning {
+      ...HotelFields
+    }
+  }
+}
+    ${HotelFieldsFragmentDoc}`;
+export type CreateHotelMutationFn = ApolloReactCommon.MutationFunction<CreateHotelMutation, CreateHotelMutationVariables>;
+
+/**
+ * __useCreateHotelMutation__
+ *
+ * To run a mutation, you first call `useCreateHotelMutation` within a React component and pass it any options that fit your needs.
+ * When your component renders, `useCreateHotelMutation` returns a tuple that includes:
+ * - A mutate function that you can call at any time to execute the mutation
+ * - An object with fields that represent the current status of the mutation's execution
+ *
+ * @param baseOptions options that will be passed into the mutation, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options-2;
+ *
+ * @example
+ * const [createHotelMutation, { data, loading, error }] = useCreateHotelMutation({
+ *   variables: {
+ *      objects: // value for 'objects'
+ *   },
+ * });
+ */
+export function useCreateHotelMutation(baseOptions?: ApolloReactHooks.MutationHookOptions<CreateHotelMutation, CreateHotelMutationVariables>) {
+        return ApolloReactHooks.useMutation<CreateHotelMutation, CreateHotelMutationVariables>(CreateHotelDocument, baseOptions);
+      }
+export type CreateHotelMutationHookResult = ReturnType<typeof useCreateHotelMutation>;
+export type CreateHotelMutationResult = ApolloReactCommon.MutationResult<CreateHotelMutation>;
+export type CreateHotelMutationOptions = ApolloReactCommon.BaseMutationOptions<CreateHotelMutation, CreateHotelMutationVariables>;

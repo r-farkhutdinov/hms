@@ -19,7 +19,7 @@ export const BookingFragment = gql`
 
 export const fetchBookings = gql`
   query fetchBookings($startDate: date!, $endDate: date!) {
-    bookings(where: { _or: { date_end: { _lte: $endDate }, date_start: { _gte: $startDate } } }) {
+    bookings(where: { _or: { date_start: { _gte: $startDate }, date_end: { _lte: $endDate } } }) {
       ...Booking
     }
     rooms {

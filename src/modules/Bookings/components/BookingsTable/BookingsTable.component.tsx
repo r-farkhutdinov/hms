@@ -53,15 +53,6 @@ export const BookingsTable: React.FC<Props> = ({ dates, zoom, data }) => {
     gridTemplateColumns: `repeat(${distinctDays.length}, minmax(${cellSize + 5 * zoom}px, 1fr)`,
   };
 
-  const rooms = [1, 4, 5];
-
-  const testBooking = {
-    room: 4,
-    start: '2020-04-30',
-    end: '2020-05-10',
-    name: 'Test booking',
-  };
-
   console.log(zoom);
 
   return (
