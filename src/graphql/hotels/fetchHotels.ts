@@ -22,6 +22,14 @@ export const fetchHotels = gql`
   }
 `;
 
+export const fetchHotelByPk = gql`
+  query fetchHotelsByPk($id: Int!) {
+    hotels_by_pk(hotel_id: $id) {
+      ...HotelFields
+    }
+  }
+`;
+
 export const createHotel = gql`
   mutation createHotel($objects: [hotels_insert_input!]!) {
     insert_hotels(objects: $objects) {

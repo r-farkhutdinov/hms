@@ -1,15 +1,15 @@
-import { EditGuest } from "./Guests/Edit";
-import { Bookings } from "./Bookings";
-import { Guests } from "./Guests";
-import { NotFound } from "./NotFound";
-import { HotelSettings } from "./Hotels/Settings";
-import { Hotels } from "./Hotels";
-import { Logout } from "./Authorization/components/Logout";
-import { EmptyLayout } from "../layout/EmptyLayout";
-import { Dashboard } from "./Dashboard";
-import { ChooseHotel } from "./ChooseHotel";
-import { Login } from "./Authorization/components/Login";
-import { HeaderSiderLayout } from "../layout/HeaderSiderLayout";
+import { EditGuest } from './Guests/Edit';
+import { Bookings } from './Bookings';
+import { Guests } from './Guests';
+import { NotFound } from './NotFound';
+import { HotelSettings } from './Hotels/Settings';
+import { Hotels } from './Hotels';
+import { Logout } from './Authorization/components/Logout';
+import { EmptyLayout } from '../layout/EmptyLayout';
+import { Dashboard } from './Dashboard';
+import { ChooseHotel } from './ChooseHotel';
+import { Login } from './Authorization/components/Login';
+import { HeaderSiderLayout } from '../layout/HeaderSiderLayout';
 
 export type RouteType = {
   name: string;
@@ -19,64 +19,64 @@ export type RouteType = {
 
 export const routes = [
   {
-    name: "login",
-    path: "/login",
+    name: 'login',
+    path: '/login',
     component: Login,
-    layout: EmptyLayout
+    layout: EmptyLayout,
   },
   {
-    name: "chooseHotel",
-    path: "/chooseHotel",
+    name: 'chooseHotel',
+    path: '/chooseHotel',
     component: ChooseHotel,
-    layout: EmptyLayout
+    layout: EmptyLayout,
   },
   {
-    name: "hotels",
-    path: "/hotels",
+    name: 'hotels',
+    path: '/hotels',
     component: Hotels,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "hotelSettings",
-    path: "/hotels/:id",
+    name: 'hotelSettings',
+    path: '/hotels/:id',
     component: HotelSettings,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "logout",
-    path: "/logout",
+    name: 'logout',
+    path: '/logout',
     component: Logout,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "guests",
-    path: "/guests/:id/",
+    name: 'guests',
+    path: '/guests/:id',
     component: EditGuest,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "guests",
-    path: "/guests",
+    name: 'guests',
+    path: '/guests',
     component: Guests,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "bookings",
-    path: "/bookings",
+    name: 'bookings',
+    path: '/bookings',
     component: Bookings,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   // Last matches. All routes have to be added above
   {
-    name: "dashboard",
-    path: "/dashboard",
+    name: 'dashboard',
+    path: '/dashboard',
     component: Dashboard,
-    layout: HeaderSiderLayout
+    layout: HeaderSiderLayout,
   },
   {
-    name: "noMatch",
-    path: "*",
+    name: 'noMatch',
+    path: '*',
     component: NotFound,
-    layout: HeaderSiderLayout
-  }
+    layout: HeaderSiderLayout,
+  },
 ];

@@ -1771,6 +1771,8 @@ export type Mutation_Root = {
   delete_room_types?: Maybe<Room_Types_Mutation_Response>;
   /** delete data from the table: "rooms" */
   delete_rooms?: Maybe<Rooms_Mutation_Response>;
+  /** delete data from the table: "services" */
+  delete_services?: Maybe<Services_Mutation_Response>;
   /** delete data from the table: "users" */
   delete_users?: Maybe<Users_Mutation_Response>;
   /** insert data into the table: "bookings" */
@@ -1789,6 +1791,8 @@ export type Mutation_Root = {
   insert_room_types?: Maybe<Room_Types_Mutation_Response>;
   /** insert data into the table: "rooms" */
   insert_rooms?: Maybe<Rooms_Mutation_Response>;
+  /** insert data into the table: "services" */
+  insert_services?: Maybe<Services_Mutation_Response>;
   /** insert data into the table: "users" */
   insert_users?: Maybe<Users_Mutation_Response>;
   /** update data of the table: "bookings" */
@@ -1807,6 +1811,8 @@ export type Mutation_Root = {
   update_room_types?: Maybe<Room_Types_Mutation_Response>;
   /** update data of the table: "rooms" */
   update_rooms?: Maybe<Rooms_Mutation_Response>;
+  /** update data of the table: "services" */
+  update_services?: Maybe<Services_Mutation_Response>;
   /** update data of the table: "users" */
   update_users?: Maybe<Users_Mutation_Response>;
 };
@@ -1857,6 +1863,12 @@ export type Mutation_RootDelete_Room_TypesArgs = {
 /** mutation root */
 export type Mutation_RootDelete_RoomsArgs = {
   where: Rooms_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootDelete_ServicesArgs = {
+  where: Services_Bool_Exp;
 };
 
 
@@ -1919,6 +1931,13 @@ export type Mutation_RootInsert_Room_TypesArgs = {
 export type Mutation_RootInsert_RoomsArgs = {
   objects: Array<Rooms_Insert_Input>;
   on_conflict?: Maybe<Rooms_On_Conflict>;
+};
+
+
+/** mutation root */
+export type Mutation_RootInsert_ServicesArgs = {
+  objects: Array<Services_Insert_Input>;
+  on_conflict?: Maybe<Services_On_Conflict>;
 };
 
 
@@ -1989,6 +2008,14 @@ export type Mutation_RootUpdate_RoomsArgs = {
   _inc?: Maybe<Rooms_Inc_Input>;
   _set?: Maybe<Rooms_Set_Input>;
   where: Rooms_Bool_Exp;
+};
+
+
+/** mutation root */
+export type Mutation_RootUpdate_ServicesArgs = {
+  _inc?: Maybe<Services_Inc_Input>;
+  _set?: Maybe<Services_Set_Input>;
+  where: Services_Bool_Exp;
 };
 
 
@@ -2066,6 +2093,12 @@ export type Query_Root = {
   rooms_aggregate: Rooms_Aggregate;
   /** fetch data from the table: "rooms" using primary key columns */
   rooms_by_pk?: Maybe<Rooms>;
+  /** fetch data from the table: "services" */
+  services: Array<Services>;
+  /** fetch aggregated fields from the table: "services" */
+  services_aggregate: Services_Aggregate;
+  /** fetch data from the table: "services" using primary key columns */
+  services_by_pk?: Maybe<Services>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -2280,6 +2313,32 @@ export type Query_RootRooms_AggregateArgs = {
 /** query root */
 export type Query_RootRooms_By_PkArgs = {
   room_id: Scalars['Int'];
+};
+
+
+/** query root */
+export type Query_RootServicesArgs = {
+  distinct_on?: Maybe<Array<Services_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Services_Order_By>>;
+  where?: Maybe<Services_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootServices_AggregateArgs = {
+  distinct_on?: Maybe<Array<Services_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Services_Order_By>>;
+  where?: Maybe<Services_Bool_Exp>;
+};
+
+
+/** query root */
+export type Query_RootServices_By_PkArgs = {
+  sevice_id: Scalars['Int'];
 };
 
 
@@ -2856,6 +2915,314 @@ export type Rooms_Variance_Order_By = {
   room_type_id?: Maybe<Order_By>;
 };
 
+/** columns and relationships of "services" */
+export type Services = {
+   __typename?: 'services';
+  price: Scalars['Int'];
+  service_type_id: Scalars['Int'];
+  sevice_id: Scalars['Int'];
+  title: Scalars['String'];
+};
+
+/** aggregated selection of "services" */
+export type Services_Aggregate = {
+   __typename?: 'services_aggregate';
+  aggregate?: Maybe<Services_Aggregate_Fields>;
+  nodes: Array<Services>;
+};
+
+/** aggregate fields of "services" */
+export type Services_Aggregate_Fields = {
+   __typename?: 'services_aggregate_fields';
+  avg?: Maybe<Services_Avg_Fields>;
+  count?: Maybe<Scalars['Int']>;
+  max?: Maybe<Services_Max_Fields>;
+  min?: Maybe<Services_Min_Fields>;
+  stddev?: Maybe<Services_Stddev_Fields>;
+  stddev_pop?: Maybe<Services_Stddev_Pop_Fields>;
+  stddev_samp?: Maybe<Services_Stddev_Samp_Fields>;
+  sum?: Maybe<Services_Sum_Fields>;
+  var_pop?: Maybe<Services_Var_Pop_Fields>;
+  var_samp?: Maybe<Services_Var_Samp_Fields>;
+  variance?: Maybe<Services_Variance_Fields>;
+};
+
+
+/** aggregate fields of "services" */
+export type Services_Aggregate_FieldsCountArgs = {
+  columns?: Maybe<Array<Services_Select_Column>>;
+  distinct?: Maybe<Scalars['Boolean']>;
+};
+
+/** order by aggregate values of table "services" */
+export type Services_Aggregate_Order_By = {
+  avg?: Maybe<Services_Avg_Order_By>;
+  count?: Maybe<Order_By>;
+  max?: Maybe<Services_Max_Order_By>;
+  min?: Maybe<Services_Min_Order_By>;
+  stddev?: Maybe<Services_Stddev_Order_By>;
+  stddev_pop?: Maybe<Services_Stddev_Pop_Order_By>;
+  stddev_samp?: Maybe<Services_Stddev_Samp_Order_By>;
+  sum?: Maybe<Services_Sum_Order_By>;
+  var_pop?: Maybe<Services_Var_Pop_Order_By>;
+  var_samp?: Maybe<Services_Var_Samp_Order_By>;
+  variance?: Maybe<Services_Variance_Order_By>;
+};
+
+/** input type for inserting array relation for remote table "services" */
+export type Services_Arr_Rel_Insert_Input = {
+  data: Array<Services_Insert_Input>;
+  on_conflict?: Maybe<Services_On_Conflict>;
+};
+
+/** aggregate avg on columns */
+export type Services_Avg_Fields = {
+   __typename?: 'services_avg_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by avg() on columns of table "services" */
+export type Services_Avg_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** Boolean expression to filter rows from the table "services". All fields are combined with a logical 'AND'. */
+export type Services_Bool_Exp = {
+  _and?: Maybe<Array<Maybe<Services_Bool_Exp>>>;
+  _not?: Maybe<Services_Bool_Exp>;
+  _or?: Maybe<Array<Maybe<Services_Bool_Exp>>>;
+  price?: Maybe<Int_Comparison_Exp>;
+  service_type_id?: Maybe<Int_Comparison_Exp>;
+  sevice_id?: Maybe<Int_Comparison_Exp>;
+  title?: Maybe<String_Comparison_Exp>;
+};
+
+/** unique or primary key constraints on table "services" */
+export enum Services_Constraint {
+  /** unique or primary key constraint */
+  ServicesPkey = 'services_pkey'
+}
+
+/** input type for incrementing integer columne in table "services" */
+export type Services_Inc_Input = {
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+};
+
+/** input type for inserting data into table "services" */
+export type Services_Insert_Input = {
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate max on columns */
+export type Services_Max_Fields = {
+   __typename?: 'services_max_fields';
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by max() on columns of table "services" */
+export type Services_Max_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** aggregate min on columns */
+export type Services_Min_Fields = {
+   __typename?: 'services_min_fields';
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** order by min() on columns of table "services" */
+export type Services_Min_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** response of any mutation on the table "services" */
+export type Services_Mutation_Response = {
+   __typename?: 'services_mutation_response';
+  /** number of affected rows by the mutation */
+  affected_rows: Scalars['Int'];
+  /** data of the affected rows by the mutation */
+  returning: Array<Services>;
+};
+
+/** input type for inserting object relation for remote table "services" */
+export type Services_Obj_Rel_Insert_Input = {
+  data: Services_Insert_Input;
+  on_conflict?: Maybe<Services_On_Conflict>;
+};
+
+/** on conflict condition type for table "services" */
+export type Services_On_Conflict = {
+  constraint: Services_Constraint;
+  update_columns: Array<Services_Update_Column>;
+  where?: Maybe<Services_Bool_Exp>;
+};
+
+/** ordering options when selecting data from "services" */
+export type Services_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+  title?: Maybe<Order_By>;
+};
+
+/** select columns of table "services" */
+export enum Services_Select_Column {
+  /** column name */
+  Price = 'price',
+  /** column name */
+  ServiceTypeId = 'service_type_id',
+  /** column name */
+  SeviceId = 'sevice_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** input type for updating data in table "services" */
+export type Services_Set_Input = {
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+  title?: Maybe<Scalars['String']>;
+};
+
+/** aggregate stddev on columns */
+export type Services_Stddev_Fields = {
+   __typename?: 'services_stddev_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev() on columns of table "services" */
+export type Services_Stddev_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_pop on columns */
+export type Services_Stddev_Pop_Fields = {
+   __typename?: 'services_stddev_pop_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_pop() on columns of table "services" */
+export type Services_Stddev_Pop_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** aggregate stddev_samp on columns */
+export type Services_Stddev_Samp_Fields = {
+   __typename?: 'services_stddev_samp_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by stddev_samp() on columns of table "services" */
+export type Services_Stddev_Samp_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** aggregate sum on columns */
+export type Services_Sum_Fields = {
+   __typename?: 'services_sum_fields';
+  price?: Maybe<Scalars['Int']>;
+  service_type_id?: Maybe<Scalars['Int']>;
+  sevice_id?: Maybe<Scalars['Int']>;
+};
+
+/** order by sum() on columns of table "services" */
+export type Services_Sum_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** update columns of table "services" */
+export enum Services_Update_Column {
+  /** column name */
+  Price = 'price',
+  /** column name */
+  ServiceTypeId = 'service_type_id',
+  /** column name */
+  SeviceId = 'sevice_id',
+  /** column name */
+  Title = 'title'
+}
+
+/** aggregate var_pop on columns */
+export type Services_Var_Pop_Fields = {
+   __typename?: 'services_var_pop_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_pop() on columns of table "services" */
+export type Services_Var_Pop_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** aggregate var_samp on columns */
+export type Services_Var_Samp_Fields = {
+   __typename?: 'services_var_samp_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by var_samp() on columns of table "services" */
+export type Services_Var_Samp_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
+/** aggregate variance on columns */
+export type Services_Variance_Fields = {
+   __typename?: 'services_variance_fields';
+  price?: Maybe<Scalars['Float']>;
+  service_type_id?: Maybe<Scalars['Float']>;
+  sevice_id?: Maybe<Scalars['Float']>;
+};
+
+/** order by variance() on columns of table "services" */
+export type Services_Variance_Order_By = {
+  price?: Maybe<Order_By>;
+  service_type_id?: Maybe<Order_By>;
+  sevice_id?: Maybe<Order_By>;
+};
+
 /** subscription root */
 export type Subscription_Root = {
    __typename?: 'subscription_root';
@@ -2907,6 +3274,12 @@ export type Subscription_Root = {
   rooms_aggregate: Rooms_Aggregate;
   /** fetch data from the table: "rooms" using primary key columns */
   rooms_by_pk?: Maybe<Rooms>;
+  /** fetch data from the table: "services" */
+  services: Array<Services>;
+  /** fetch aggregated fields from the table: "services" */
+  services_aggregate: Services_Aggregate;
+  /** fetch data from the table: "services" using primary key columns */
+  services_by_pk?: Maybe<Services>;
   /** fetch data from the table: "users" */
   users: Array<Users>;
   /** fetch aggregated fields from the table: "users" */
@@ -3121,6 +3494,32 @@ export type Subscription_RootRooms_AggregateArgs = {
 /** subscription root */
 export type Subscription_RootRooms_By_PkArgs = {
   room_id: Scalars['Int'];
+};
+
+
+/** subscription root */
+export type Subscription_RootServicesArgs = {
+  distinct_on?: Maybe<Array<Services_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Services_Order_By>>;
+  where?: Maybe<Services_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootServices_AggregateArgs = {
+  distinct_on?: Maybe<Array<Services_Select_Column>>;
+  limit?: Maybe<Scalars['Int']>;
+  offset?: Maybe<Scalars['Int']>;
+  order_by?: Maybe<Array<Services_Order_By>>;
+  where?: Maybe<Services_Bool_Exp>;
+};
+
+
+/** subscription root */
+export type Subscription_RootServices_By_PkArgs = {
+  sevice_id: Scalars['Int'];
 };
 
 
@@ -3461,6 +3860,16 @@ export type FetchHotelsQuery = { __typename?: 'query_root', hotels: Array<(
     & HotelFieldsFragment
   )> };
 
+export type FetchHotelsByPkQueryVariables = {
+  id: Scalars['Int'];
+};
+
+
+export type FetchHotelsByPkQuery = { __typename?: 'query_root', hotels_by_pk?: Maybe<(
+    { __typename?: 'hotels' }
+    & HotelFieldsFragment
+  )> };
+
 export type CreateHotelMutationVariables = {
   objects: Array<Hotels_Insert_Input>;
 };
@@ -3647,6 +4056,39 @@ export function useFetchHotelsLazyQuery(baseOptions?: ApolloReactHooks.LazyQuery
 export type FetchHotelsQueryHookResult = ReturnType<typeof useFetchHotelsQuery>;
 export type FetchHotelsLazyQueryHookResult = ReturnType<typeof useFetchHotelsLazyQuery>;
 export type FetchHotelsQueryResult = ApolloReactCommon.QueryResult<FetchHotelsQuery, FetchHotelsQueryVariables>;
+export const FetchHotelsByPkDocument = gql`
+    query fetchHotelsByPk($id: Int!) {
+  hotels_by_pk(hotel_id: $id) {
+    ...HotelFields
+  }
+}
+    ${HotelFieldsFragmentDoc}`;
+
+/**
+ * __useFetchHotelsByPkQuery__
+ *
+ * To run a query within a React component, call `useFetchHotelsByPkQuery` and pass it any options that fit your needs.
+ * When your component renders, `useFetchHotelsByPkQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useFetchHotelsByPkQuery({
+ *   variables: {
+ *      id: // value for 'id'
+ *   },
+ * });
+ */
+export function useFetchHotelsByPkQuery(baseOptions?: ApolloReactHooks.QueryHookOptions<FetchHotelsByPkQuery, FetchHotelsByPkQueryVariables>) {
+        return ApolloReactHooks.useQuery<FetchHotelsByPkQuery, FetchHotelsByPkQueryVariables>(FetchHotelsByPkDocument, baseOptions);
+      }
+export function useFetchHotelsByPkLazyQuery(baseOptions?: ApolloReactHooks.LazyQueryHookOptions<FetchHotelsByPkQuery, FetchHotelsByPkQueryVariables>) {
+          return ApolloReactHooks.useLazyQuery<FetchHotelsByPkQuery, FetchHotelsByPkQueryVariables>(FetchHotelsByPkDocument, baseOptions);
+        }
+export type FetchHotelsByPkQueryHookResult = ReturnType<typeof useFetchHotelsByPkQuery>;
+export type FetchHotelsByPkLazyQueryHookResult = ReturnType<typeof useFetchHotelsByPkLazyQuery>;
+export type FetchHotelsByPkQueryResult = ApolloReactCommon.QueryResult<FetchHotelsByPkQuery, FetchHotelsByPkQueryVariables>;
 export const CreateHotelDocument = gql`
     mutation createHotel($objects: [hotels_insert_input!]!) {
   insert_hotels(objects: $objects) {

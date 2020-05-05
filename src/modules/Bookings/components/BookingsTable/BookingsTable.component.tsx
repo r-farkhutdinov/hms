@@ -6,6 +6,8 @@ import style from './BookingsTable.less';
 import weekday from 'dayjs/plugin/weekday';
 import { getBookingStyle } from './util';
 import { FetchBookingsQuery } from '../../../../__generated__/graphql';
+import { Space } from 'antd';
+import { EditOutlined, DeleteOutlined } from '@ant-design/icons';
 
 dayjs.extend(weekday);
 
@@ -22,7 +24,7 @@ const getTransparentGrid = (rows: number, columns: number) => {
     for (let j = 1; j < columns + 1; j++) {
       result.push(
         <div
-          key={i}
+          key={`${i}${j}`}
           className={style.transparentCell}
           style={{ gridRowStart: i, gridRowEnd: i, gridColumnStart: j, gridColumnEnd: j }}
         />,
@@ -53,8 +55,6 @@ export const BookingsTable: React.FC<Props> = ({ dates, zoom, data }) => {
     gridTemplateColumns: `repeat(${distinctDays.length}, minmax(${cellSize + 5 * zoom}px, 1fr)`,
   };
 
-  console.log(zoom);
-
   return (
     <>
       <div className={style.container}>
@@ -75,12 +75,17 @@ export const BookingsTable: React.FC<Props> = ({ dates, zoom, data }) => {
           ))}
         </div>
         <div className={style.bookingsGridContainer} style={bookingsContainerStyle}>
-          {data?.bookings.map(b => (
+          {data?.bookings.map((b, index) => (
             <div
+              key={index}
               className={style.booking}
               style={getBookingStyle(b.date_start, b.date_end, b.room.number, data.rooms, distinctDays)}
             >
               {`${b.guest?.firstName} ${b.guest?.lastName}`}
+              {/* <Space>
+                <EditOutlined />
+                <DeleteOutlined twoToneColor="red" />
+              </Space> */}
             </div>
           ))}
 

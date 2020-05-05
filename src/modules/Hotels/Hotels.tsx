@@ -1,23 +1,21 @@
 import * as React from 'react';
-import { List, Skeleton, Space, Button } from 'antd';
-import { HotelModelType } from './store/hotels.model';
+import { List, Skeleton, Space, Button, Avatar, Badge } from 'antd';
 import { useStore } from '../../core/util';
 import { observer } from 'mobx-react';
-import { SettingOutlined, PlusOutlined } from '@ant-design/icons';
+import { SettingOutlined, PlusOutlined, BankFilled } from '@ant-design/icons';
 import { Link } from 'react-router-dom';
 import style from './Hotels.less';
 import { HotelDetails } from './Details';
 import { useIntl } from 'react-intl';
 import { AddForm } from './AddForm';
+import { useFetchHotelsQuery, HotelFieldsFragment } from '../../__generated__/graphql';
 
 export const Hotels: React.FC = observer(() => {
-  const { hotels, authorization } = useStore();
-  const { loadHotels, hotels: hotelsList, loading, selectedHotelId } = hotels;
+  const { hotels } = useStore();
+  const { selectedHotelId } = hotels;
   const { formatMessage: f } = useIntl();
 
-  React.useEffect(() => {
-    loadHotels((authorization.user && authorization.user.id) || 0); // TODO: remove when ready
-  }, []);
+  const { data, loading } = useFetchHotelsQuery();
 
   const [showDrawer, setShowDrawer] = React.useState<boolean>(false);
   const [showAddForm, setShowAddForm] = React.useState<boolean>(false);
@@ -36,32 +34,39 @@ export const Hotels: React.FC = observer(() => {
           {f({ id: 'addHotel' })}
         </Button>
       </Space>
+
       <AddForm show={showAddForm} setShow={setShowAddForm} />
+
       <HotelDetails show={showDrawer} setShow={setShowDrawer} hotelId={hotelId} />
 
       <List
         className="demo-loadmore-list"
         loading={loading}
         itemLayout="horizontal"
-        dataSource={hotelsList}
-        renderItem={(item: HotelModelType) => (
+        dataSource={data?.hotels || []}
+        renderItem={(item: HotelFieldsFragment) => (
           <List.Item
             actions={[
-              <Link to={`/hotels/${item.id}`}>
+              <Link to={`/hotels/${item.hotel_id}`}>
                 <SettingOutlined />
               </Link>,
             ]}
           >
             <Skeleton title={false} loading={loading} active>
               <List.Item.Meta
+                avatar={
+                  <Badge count={undefined}>
+                    <Avatar size="large" icon={<BankFilled />} />
+                  </Badge>
+                }
                 title={
-                  <span className={style.name} onClick={() => handleHotelDetailsClick(item.id)}>
-                    {item.name}
+                  <span className={style.name} onClick={() => handleHotelDetailsClick(item.hotel_id)}>
+                    {item.title}
                   </span>
                 }
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                description={item.location}
               />
-              <div>{selectedHotelId === item.id ? f({ id: 'hotelSelected' }) : ''}</div>
+              <div>{selectedHotelId === item.hotel_id ? f({ id: 'hotelSelected' }) : ''}</div>
             </Skeleton>
           </List.Item>
         )}

@@ -22,6 +22,7 @@ export const AddForm: React.FC<Props> = ({ show, setShow }) => {
       setShow(false);
     },
     onError: () => notification.error({ message: 'Hotel has not been created' }),
+    refetchQueries: ['fetchHotels'],
   });
 
   const submitForm = () => {
